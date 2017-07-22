@@ -1,0 +1,29 @@
+DELETE {  
+  ?s ?p ?o . 
+}
+INSERT { 
+  ?OBOs ?OBOp ?OBOo .
+}
+WHERE { 
+
+  ?s ?p ?o . 
+
+  BIND(
+    IF(isIRI(?s), 
+      IRI(REPLACE(STR(?s), "^http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#", "http://purl.obolibrary.org/obo/NCIT_")),
+      ?s)
+  AS ?OBOs)
+
+  BIND(
+    IF(isIRI(?p), 
+      IRI(REPLACE(STR(?p), "^http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#", "http://purl.obolibrary.org/obo/NCIT_")),
+      ?p)
+  AS ?OBOp)
+
+  BIND(
+    IF(isIRI(?o), 
+      IRI(REPLACE(STR(?o), "^http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#", "http://purl.obolibrary.org/obo/NCIT_")),
+      ?o)
+  AS ?OBOo)
+
+}
