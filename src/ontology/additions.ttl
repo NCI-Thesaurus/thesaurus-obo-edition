@@ -1,1 +1,5 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://purl.org/dc/terms/isVersionOf> a owl:AnnotationProperty .
+
 <http://purl.obolibrary.org/obo/ncit.owl> <http://purl.org/dc/terms/isVersionOf> <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl> .
