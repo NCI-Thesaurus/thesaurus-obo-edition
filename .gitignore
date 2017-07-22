@@ -1,3 +1,6 @@
 src/ontology/Thesaurus.owl
 src/ontology/blazegraph-runner.log
 src/ontology/blazegraph.jnl
+src/ontology/ncit.owl.tmp
+src/ontology/ncit-edit.ttl
+src/ontology/ncit.owl

@@ -1,0 +1,9 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+INSERT {
+  <http://purl.obolibrary.org/obo/ncit.owl> owl:versionIRI ?versionIRI .
+}
+WHERE {
+  <http://purl.obolibrary.org/obo/ncit.owl> owl:versionInfo ?version .
+  BIND(IRI(CONCAT("http://purl.obolibrary.org/obo/ncit/releases/", STR(?version), "/ncit.owl")) AS ?versionIRI)
+}

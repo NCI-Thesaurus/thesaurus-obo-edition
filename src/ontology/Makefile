@@ -8,6 +8,7 @@ $(NCIT): $(SRC)
 	export JAVA_OPTS=-Xmx8G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-iri.rq &&\
+	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-version-iri.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-iris-to-obo-style.rq &&\
-	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=rdfxml ncit.owl.tmp &&\
-	mv ncit.owl.tmp ncit.owl && touch ncit.owl
+	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=turtle ncit-edit.ttl &&\
+	mv ncit-edit.ttl $(NCIT) && touch $(NCIT)
