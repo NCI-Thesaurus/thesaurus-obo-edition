@@ -2,7 +2,7 @@ SRC=Thesaurus.owl
 NCIT=ncit.owl
 
 $(SRC):
-	curl -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
+	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
 
 $(NCIT): $(SRC)
 	export JAVA_OPTS=-Xmx8G &&\
