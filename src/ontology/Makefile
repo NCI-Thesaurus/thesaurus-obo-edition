@@ -1,6 +1,9 @@
 SRC=Thesaurus.owl
 NCIT=ncit.owl
 
+.PHONY: all
+all: ncit-property-graph.ttl
+
 $(SRC):
 	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
 
@@ -13,3 +16,8 @@ $(NCIT): $(SRC)
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-iris-to-obo-style.rq &&\
 	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=turtle ncit-edit.ttl &&\
 	mv ncit-edit.ttl $(NCIT) && touch $(NCIT)
+
+ncit-property-graph.ttl: $(NCIT)
+	export JAVA_OPTS=-Xmx80G &&\
+	ncit-utils materialize-property-expressions ncit.owl $@.tmp &&\
+	mv $@.tmp $@ && touch $@
