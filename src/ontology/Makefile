@@ -1,8 +1,15 @@
+###############################################################################
+# This Makefile assumes you have blazegraph-runner and ncit-utils on your PATH.
+# These can be obtained from GitHub:
+# - https://github.com/balhoff/blazegraph-runner/releases
+# - https://github.com/NCI-Thesaurus/ncit-utils/releases
+###############################################################################
+
 SRC=Thesaurus.owl
 NCIT=ncit.owl
 
 .PHONY: all
-all: ncit-property-graph.ttl
+all: ncit-graph.jnl
 
 $(SRC):
 	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
@@ -21,3 +28,8 @@ ncit-property-graph.ttl: $(NCIT)
 	export JAVA_OPTS=-Xmx80G &&\
 	ncit-utils materialize-property-expressions ncit.owl $@.tmp &&\
 	mv $@.tmp $@ && touch $@
+
+ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl
+	rm $@
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph $(NCIT) &&\
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph.ttl
