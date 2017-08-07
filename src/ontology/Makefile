@@ -17,8 +17,8 @@ $(SRC):
 $(NCIT): $(SRC)
 	export JAVA_OPTS=-Xmx8G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
-	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-properties &&\
-	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-values &&\
+	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-properties.rq &&\
+	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-values.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-iri.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-version-iri.rq &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle additions.ttl &&\
