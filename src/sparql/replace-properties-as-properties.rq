@@ -1,0 +1,16 @@
+PREFIX evs: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+
+DELETE {
+  ?s ?old_property ?o .
+}
+INSERT {
+  ?s ?new_property ?o .
+}
+WHERE {
+  VALUES (?old_property ?new_property) {
+    (evs:P97 obo:IAO_0000115)
+    (evs:P90 oio:hasExactSynonym)
+  }
+  ?s ?old_property ?o .
+}

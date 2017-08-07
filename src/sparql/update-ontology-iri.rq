@@ -1,5 +1,5 @@
 DELETE {
-    <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl> ?p ?o .
+  <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl> ?p ?o .
 }
 INSERT {
   <http://purl.obolibrary.org/obo/ncit.owl> ?p ?o .
