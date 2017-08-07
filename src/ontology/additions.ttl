@@ -1,5 +1,15 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
 
 <http://purl.org/dc/terms/isVersionOf> a owl:AnnotationProperty .
 
 <http://purl.obolibrary.org/obo/ncit.owl> <http://purl.org/dc/terms/isVersionOf> <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl> .
+
+obo:IAO_0000115 a owl:AnnotationProperty ;
+    rdfs:label "definition"^^xsd:string .
+
+oio:hasExactSynonym a owl:AnnotationProperty ;
+    rdfs:label "has exact synonym"^^xsd:string .
