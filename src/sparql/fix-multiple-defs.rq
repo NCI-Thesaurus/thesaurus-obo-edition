@@ -1,0 +1,27 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+
+DELETE {
+  ?s obo:IAO_0000115 ?comment .
+  ?axiom owl:annotatedProperty obo:IAO_0000115 .
+}
+INSERT {
+  ?s rdfs:comment ?comment .
+  ?axiom owl:annotatedProperty rdfs:comment .
+}
+WHERE {
+  OPTIONAL {
+    ?axiom a owl:Axiom ;
+           owl:annotatedSource ?s ;
+           owl:annotatedProperty obo:IAO_0000115 ;
+           owl:annotatedTarget ?comment .
+  }
+  {
+    SELECT ?s ?axiom (MAX(?v) AS ?comment) WHERE {
+      ?s obo:IAO_0000115 ?v .
+    }
+    GROUP BY ?s ?axiom
+    HAVING((COUNT(DISTINCT ?v)) > 1)
+  }
+}

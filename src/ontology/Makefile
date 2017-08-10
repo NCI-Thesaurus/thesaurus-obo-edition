@@ -9,7 +9,7 @@ SRC=Thesaurus.owl
 NCIT=ncit.owl
 
 .PHONY: all
-all: ncit-graph.jnl
+all: $(NCIT) ncit.obo ncit-graph.jnl
 
 $(SRC):
 	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
@@ -19,6 +19,7 @@ $(NCIT): $(SRC)
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-properties.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-values.rq &&\
+	blazegraph-runner update --journal=blazegraph.jnl ../sparql/fix-multiple-defs.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-iri.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-version-iri.rq &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle additions.ttl &&\
@@ -35,3 +36,6 @@ ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl
 	rm -f $@
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph $(NCIT) &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph.ttl
+
+ncit.obo: $(NCIT)
+	./owltools ncit.owl -o -f obo ncit.obo.tmp && grep -v ^owl-axioms ncit.obo.tmp >$@
