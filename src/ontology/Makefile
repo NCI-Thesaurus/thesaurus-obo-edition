@@ -1,9 +1,10 @@
-###############################################################################
-# This Makefile assumes you have blazegraph-runner and ncit-utils on your PATH.
+##########################################################################################
+# This Makefile assumes you have blazegraph-runner, ncit-utils, and owltools on your PATH.
 # These can be obtained from GitHub:
 # - https://github.com/balhoff/blazegraph-runner/releases
 # - https://github.com/NCI-Thesaurus/ncit-utils/releases
-###############################################################################
+# - https://github.com/owlcollab/owltools/releases
+##########################################################################################
 
 SRC=Thesaurus.owl
 NCIT=ncit.owl
@@ -38,4 +39,4 @@ ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph.ttl
 
 ncit.obo: $(NCIT)
-	./owltools ncit.owl -o -f obo ncit.obo.tmp && grep -v ^owl-axioms ncit.obo.tmp >$@
+	owltools ncit.owl -o -f obo ncit.obo.tmp && grep -v ^owl-axioms ncit.obo.tmp >$@
