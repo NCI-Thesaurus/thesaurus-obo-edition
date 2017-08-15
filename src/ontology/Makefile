@@ -1,8 +1,9 @@
 ##########################################################################################
-# This Makefile assumes you have blazegraph-runner, ncit-utils, and owltools on your PATH.
+# This Makefile assumes you have blazegraph-runner, ncit-utils, robot, and owltools on your PATH.
 # These can be obtained from GitHub:
 # - https://github.com/balhoff/blazegraph-runner/releases
 # - https://github.com/NCI-Thesaurus/ncit-utils/releases
+# - https://github.com/ontodev/robot
 # - https://github.com/owlcollab/owltools/releases
 ##########################################################################################
 
@@ -16,7 +17,7 @@ $(SRC):
 	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
 
 $(NCIT): $(SRC)
-	export JAVA_OPTS=-Xmx8G &&\
+	export JAVA_OPTS=-Xmx8G && export ROBOT_JAVA_ARGS=-Xmx16G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-properties.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-values.rq &&\
@@ -26,7 +27,7 @@ $(NCIT): $(SRC)
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle additions.ttl &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-iris-to-obo-style.rq &&\
 	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=turtle ncit-edit.ttl &&\
-	mv ncit-edit.ttl $(NCIT) && touch $(NCIT)
+	robot reason -i ncit-edit.ttl -r elk reduce -r elk -o $@
 
 ncit-property-graph.ttl: $(NCIT)
 	export JAVA_OPTS=-Xmx80G &&\
