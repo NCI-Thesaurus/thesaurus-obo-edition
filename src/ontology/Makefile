@@ -36,7 +36,7 @@ ncit-property-graph.ttl: $(NCIT)
 
 ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl
 	rm -f $@
-	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph $(NCIT) &&\
+	blazegraph-runner load --journal=$@ --informat=rdfxml --use-ontology-graph $(NCIT) &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph.ttl
 
 ncit.obo: $(NCIT)
