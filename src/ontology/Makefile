@@ -31,13 +31,14 @@ $(NCIT): $(SRC)
 
 ncit-property-graph.ttl: $(NCIT)
 	export JAVA_OPTS=-Xmx80G &&\
-	ncit-utils materialize-property-expressions ncit.owl $@.tmp &&\
-	mv $@.tmp $@ && touch $@
+	ncit-utils materialize-property-expressions ncit.owl $@.tmp ncit-property-graph-redundant.ttl.tmp &&\
+	mv $@.tmp $@ && touch $@ && mv ncit-property-graph-redundant.ttl.tmp ncit-property-graph-redundant.ttl && touch ncit-property-graph-redundant.ttl
 
 ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl
 	rm -f $@
 	blazegraph-runner load --journal=$@ --informat=rdfxml --use-ontology-graph $(NCIT) &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph.ttl
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph-redundant.ttl
 
 ncit.obo: $(NCIT)
 	owltools ncit.owl -o -f obo ncit.obo.tmp && grep -v ^owl-axioms ncit.obo.tmp >$@
