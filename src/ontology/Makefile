@@ -19,6 +19,7 @@ $(SRC):
 $(NCIT): $(SRC)
 	export JAVA_OPTS=-Xmx8G && export ROBOT_JAVA_ARGS=-Xmx16G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
+	blazegraph-runner update --journal=blazegraph.jnl ../sparql/make_role_classes_obolete.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-properties.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-values.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/fix-multiple-defs.rq &&\

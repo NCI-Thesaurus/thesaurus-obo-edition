@@ -1,0 +1,18 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX evs: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+
+DELETE {
+  ?role rdfs:label ?label .
+  ?role rdfs:subClassOf evs:C43643 .
+}
+INSERT {
+  ?role rdfs:label ?obs_label .
+  ?role owl:deprecated true .
+}
+WHERE {
+  ?role rdfs:subClassOf* evs:C43643 .
+  ?role rdfs:label ?label .
+  BIND (CONCAT("obsolete ", ?label) AS ?obs_label)
+}
