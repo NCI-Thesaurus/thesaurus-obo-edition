@@ -4,10 +4,10 @@ This project aims to develop an [OBO Library](http://obofoundry.org)-friendly re
 ## Download
 The OBO edition is currently a work in progress, so ontology content may change frequently. The in-progress ontology is available here: http://purl.obolibrary.org/obo/ncit.owl
 
-Additional downloads may be available in the [project wiki](https://github.com/NCI-Thesaurus/thesaurus-obo-edition/wiki/NCI-Thesaurus-OBO-edition).
+Additional downloads may be available in the [project wiki](https://github.com/NCI-Thesaurus/thesaurus-obo-edition/wiki).
 
 ## Documentation
-Please see the [project wiki](https://github.com/NCI-Thesaurus/thesaurus-obo-edition/wiki/NCI-Thesaurus-OBO-edition) for more information.
+Please see the [project wiki](https://github.com/NCI-Thesaurus/thesaurus-obo-edition/wiki) for more information.
 
 ## Contact
 More information about this project can be provided by Melissa Haendel (haendel@ohsu.edu). For details on software implementing the OBO Edition, contact Jim Balhoff (balhoff@renci.org).
