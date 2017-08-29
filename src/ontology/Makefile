@@ -1,17 +1,21 @@
 ##########################################################################################
-# This Makefile assumes you have blazegraph-runner, ncit-utils, robot, and owltools on your PATH.
+# This Makefile assumes you have blazegraph-runner, ncit-utils, dosdp-tools, robot, and owltools on your PATH.
 # These can be obtained from GitHub:
 # - https://github.com/balhoff/blazegraph-runner/releases
 # - https://github.com/NCI-Thesaurus/ncit-utils/releases
+# - https://github.com/INCATools/dosdp-tools/releases
 # - https://github.com/ontodev/robot
 # - https://github.com/owlcollab/owltools/releases
 ##########################################################################################
 
 SRC=Thesaurus.owl
 NCIT=ncit.owl
+DATE=$(shell date +'%Y-%m-%d')
+PREFIX=http://purl.obolibrary.org/obo/ncit
+RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
 .PHONY: all
-all: $(NCIT) ncit.obo ncit-graph.jnl
+all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-plus.owl
 
 $(SRC):
 	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
@@ -43,3 +47,11 @@ ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl
 
 ncit.obo: $(NCIT)
 	owltools ncit.owl -o -f obo ncit.obo.tmp && grep -v ^owl-axioms ncit.obo.tmp >$@
+
+ncit-bridge-to-cl.owl:
+	dosdp-tools generate --infile=../mappings/cl.tsv --obo-prefixes=true --template=../mappings/equivalence_mapping.yaml --outfile=ncit-cl-bridge.ofn &&\
+	robot annotate --input ncit-cl-bridge.ofn --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --output $@ && rm ncit-cl-bridge.ofn
+
+ncit-plus.owl: $(NCIT)
+	ncit-utils replace-mapped-terms --mappings=../mappings/cl.tsv --ontology=ncit-edit.ttl --keep=2 --drop=0 --output=ncit-plus-tmp.owl &&\
+	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reduce -r elk -o $@ && rm ncit-plus-tmp.owl
