@@ -1,0 +1,12 @@
+pattern_name: 'equivalence_mapping'
+
+classes:
+  Thing: 'owl:Thing'
+  
+vars:
+  cl: Thing
+  
+equivalentTo: 
+  text: "%s" 
+  vars:
+    - 'cl'

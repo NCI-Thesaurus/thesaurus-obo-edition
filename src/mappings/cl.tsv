@@ -1,0 +1,262 @@
+defined_class	defined_class_label	cl	cl_label
+http://purl.obolibrary.org/obo/NCIT_C13077	Acinar Cell	http://purl.obolibrary.org/obo/CL_0000622	acinar cell
+http://purl.obolibrary.org/obo/NCIT_C12556	Adipocyte	http://purl.obolibrary.org/obo/CL_0000136	fat cell
+http://purl.obolibrary.org/obo/NCIT_C12556	Adipocyte	http://purl.obolibrary.org/obo/CL_0000632	hepatic stellate cell
+http://purl.obolibrary.org/obo/NCIT_C32054	Alveolar Cell Type I	http://purl.obolibrary.org/obo/CL_0002062	type I pneumocyte
+http://purl.obolibrary.org/obo/NCIT_C32055	Alveolar Cell Type II	http://purl.obolibrary.org/obo/CL_0002063	type II pneumocyte
+http://purl.obolibrary.org/obo/NCIT_C12565	Alveolar Macrophage	http://purl.obolibrary.org/obo/CL_0000583	alveolar macrophage
+http://purl.obolibrary.org/obo/NCIT_C12626	Amacrine Cell	http://purl.obolibrary.org/obo/CL_0000561	amacrine cell
+http://purl.obolibrary.org/obo/NCIT_C12579	Ameloblast	http://purl.obolibrary.org/obo/CL_0000059	ameloblast
+http://purl.obolibrary.org/obo/NCIT_C33934	Angioblast	http://purl.obolibrary.org/obo/CL_0000566	angioblastic mesenchymal cell
+http://purl.obolibrary.org/obo/NCIT_C12645	Anterior Horn Cell	http://purl.obolibrary.org/obo/CL_0000100	motor neuron
+http://purl.obolibrary.org/obo/NCIT_C12621	Antigen Presenting Cell	http://purl.obolibrary.org/obo/CL_0000145	professional antigen presenting cell
+http://purl.obolibrary.org/obo/NCIT_C43374	Apocrine Cell	http://purl.obolibrary.org/obo/CL_0000033	apocrine cell
+http://purl.obolibrary.org/obo/NCIT_C12655	APUD Cell	http://purl.obolibrary.org/obo/CL_0000568	amine precursor uptake and decarboxylation cell
+http://purl.obolibrary.org/obo/NCIT_C32140	Argentaffin Cell	http://purl.obolibrary.org/obo/CL_0000577	type EC enteroendocrine cell
+http://purl.obolibrary.org/obo/NCIT_C12477	Astrocyte	http://purl.obolibrary.org/obo/CL_0000127	astrocyte
+http://purl.obolibrary.org/obo/NCIT_C12474	B-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000236	B cell
+http://purl.obolibrary.org/obo/NCIT_C13117	Band Cell	http://purl.obolibrary.org/obo/CL_0000560	band form neutrophil
+http://purl.obolibrary.org/obo/NCIT_C12475	Basal Cell	http://purl.obolibrary.org/obo/CL_0000646	basal cell
+http://purl.obolibrary.org/obo/NCIT_C12531	Basophil	http://purl.obolibrary.org/obo/CL_0000767	basophil
+http://purl.obolibrary.org/obo/NCIT_C13130	Basophilic Erythroblast	http://purl.obolibrary.org/obo/CL_0000549	basophilic erythroblast
+http://purl.obolibrary.org/obo/NCIT_C32199	Beta Cell	http://purl.obolibrary.org/obo/CL_0000168	insulin secreting cell
+http://purl.obolibrary.org/obo/NCIT_C13154	Bipolar Neuron	http://purl.obolibrary.org/obo/CL_0000103	bipolar neuron
+http://purl.obolibrary.org/obo/NCIT_C32210	Bladder Urothelial Cell	http://purl.obolibrary.org/obo/CL_1001428	bladder urothelial cell
+http://purl.obolibrary.org/obo/NCIT_C12918	Blast Cell	http://purl.obolibrary.org/obo/CL_0000055	non-terminally differentiated cell
+http://purl.obolibrary.org/obo/NCIT_C61288	Blastemal Cell	http://purl.obolibrary.org/obo/CL_0000354	blastemal cell
+http://purl.obolibrary.org/obo/NCIT_C12518	Blastomere	http://purl.obolibrary.org/obo/CL_0000353	blastoderm cell
+http://purl.obolibrary.org/obo/NCIT_C48762	Bone Cell	http://purl.obolibrary.org/obo/CL_0001035	bone cell
+http://purl.obolibrary.org/obo/NCIT_C12552	Bone Marrow Myeloid Stem Cell	http://purl.obolibrary.org/obo/CL_0000049	common myeloid progenitor
+http://purl.obolibrary.org/obo/NCIT_C54242	Bronchial Epithelial Cell	http://purl.obolibrary.org/obo/CL_0002328	bronchial epithelial cell
+http://purl.obolibrary.org/obo/NCIT_C32236	Brush Cell	http://purl.obolibrary.org/obo/CL_0002204	brush cell
+http://purl.obolibrary.org/obo/NCIT_C33261	C-Cell	http://purl.obolibrary.org/obo/CL_0000570	parafollicular cell
+http://purl.obolibrary.org/obo/NCIT_C13002	Cardiomyocyte	http://purl.obolibrary.org/obo/CL_0000746	cardiac muscle cell
+http://purl.obolibrary.org/obo/NCIT_C12508	Cell	http://purl.obolibrary.org/obo/CL_0000000	cell
+http://purl.obolibrary.org/obo/NCIT_C32271	Cell of the Epidermis	http://purl.obolibrary.org/obo/CL_0000362	epidermal cell
+http://purl.obolibrary.org/obo/NCIT_C32274	Cementoblast	http://purl.obolibrary.org/obo/CL_0000061	cementoblast
+http://purl.obolibrary.org/obo/NCIT_C32275	Cementocyte	http://purl.obolibrary.org/obo/CL_0000141	cementocyte
+http://purl.obolibrary.org/obo/NCIT_C32932	Centroblast	http://purl.obolibrary.org/obo/CL_0000965	Bm3 B cell
+http://purl.obolibrary.org/obo/NCIT_C32305	Chief Cell of the Stomach	http://purl.obolibrary.org/obo/CL_0000155	peptic cell
+http://purl.obolibrary.org/obo/NCIT_C32306	Chondroblast	http://purl.obolibrary.org/obo/CL_0000058	chondroblast
+http://purl.obolibrary.org/obo/NCIT_C12557	Chondrocyte	http://purl.obolibrary.org/obo/CL_0000138	chondrocyte
+http://purl.obolibrary.org/obo/NCIT_C12554	Chromaffin Cell	http://purl.obolibrary.org/obo/CL_0000166	chromaffin cell
+http://purl.obolibrary.org/obo/NCIT_C32313	Chromophobe Cell	http://purl.obolibrary.org/obo/CL_0000641	chromophobe cell
+http://purl.obolibrary.org/obo/NCIT_C13143	Club Cell	http://purl.obolibrary.org/obo/CL_0007021	alarm substance cell
+http://purl.obolibrary.org/obo/NCIT_C13158	Columnar Cell	http://purl.obolibrary.org/obo/CL_0002071	enterocyte of epithelium of large intestine
+http://purl.obolibrary.org/obo/NCIT_C123782	Conventional Dendritic Cell	http://purl.obolibrary.org/obo/CL_0000990	conventional dendritic cell
+http://purl.obolibrary.org/obo/NCIT_C32390	Corticotroph Cell	http://purl.obolibrary.org/obo/CL_0002309	corticotroph
+http://purl.obolibrary.org/obo/NCIT_C12543	Cytotoxic T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000910	cytotoxic T cell
+http://purl.obolibrary.org/obo/NCIT_C12574	Delta Cell	http://purl.obolibrary.org/obo/CL_0000502	type D enteroendocrine cell
+http://purl.obolibrary.org/obo/NCIT_C12574	Delta Cell	http://purl.obolibrary.org/obo/CL_0000172	somatostatin secreting cell
+http://purl.obolibrary.org/obo/NCIT_C38639	Delta Cell of the Pancreas	http://purl.obolibrary.org/obo/CL_0000173	pancreatic D cell
+http://purl.obolibrary.org/obo/NCIT_C12583	Dendritic Cell	http://purl.obolibrary.org/obo/CL_0000451	dendritic cell
+http://purl.obolibrary.org/obo/NCIT_C26454	Dopaminergic Cell	http://purl.obolibrary.org/obo/CL_0000700	dopaminergic neuron
+http://purl.obolibrary.org/obo/NCIT_C43373	Eccrine Cell	http://purl.obolibrary.org/obo/CL_0000434	eccrine cell
+http://purl.obolibrary.org/obo/NCIT_C33915	Ectocervical Squamous Cell	http://purl.obolibrary.org/obo/CL_0002244	squamous cell of ectocervix
+http://purl.obolibrary.org/obo/NCIT_C33935	Ectoderm Cell	http://purl.obolibrary.org/obo/CL_0000221	ectodermal cell
+http://purl.obolibrary.org/obo/NCIT_C104083	Effector T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000911	effector T cell
+http://purl.obolibrary.org/obo/NCIT_C12643	Efferent Neuron	http://purl.obolibrary.org/obo/CL_0000527	efferent neuron
+http://purl.obolibrary.org/obo/NCIT_C13054	Embryonic Cell	http://purl.obolibrary.org/obo/CL_0002321	embryonic cell
+http://purl.obolibrary.org/obo/NCIT_C12935	Embryonic Stem Cell	http://purl.obolibrary.org/obo/CL_0002322	embryonic stem cell
+http://purl.obolibrary.org/obo/NCIT_C32506	Endocrine Cell	http://purl.obolibrary.org/obo/CL_0000163	endocrine cell
+http://purl.obolibrary.org/obo/NCIT_C33932	Endoderm Cell	http://purl.obolibrary.org/obo/CL_0000223	endodermal cell
+http://purl.obolibrary.org/obo/NCIT_C32521	Endosteal Cell	http://purl.obolibrary.org/obo/CL_0002157	endosteal cell
+http://purl.obolibrary.org/obo/NCIT_C12865	Endothelial Cell	http://purl.obolibrary.org/obo/CL_0000115	endothelial cell
+http://purl.obolibrary.org/obo/NCIT_C124145	Endothelial Progenitor Cell	http://purl.obolibrary.org/obo/CL_0002619	adult endothelial progenitor cell
+http://purl.obolibrary.org/obo/NCIT_C12575	Enterochromaffin Cell	http://purl.obolibrary.org/obo/CL_0000577	type EC enteroendocrine cell
+http://purl.obolibrary.org/obo/NCIT_C12576	Enterochromaffin-Like Cell	http://purl.obolibrary.org/obo/CL_0000504	enterochromaffin-like cell
+http://purl.obolibrary.org/obo/NCIT_C12585	Enterocyte	http://purl.obolibrary.org/obo/CL_0000584	enterocyte
+http://purl.obolibrary.org/obo/NCIT_C45968	Enteroendocrine Cell	http://purl.obolibrary.org/obo/CL_0000164	enteroendocrine cell
+http://purl.obolibrary.org/obo/NCIT_C12532	Eosinophil	http://purl.obolibrary.org/obo/CL_0000771	eosinophil
+http://purl.obolibrary.org/obo/NCIT_C13003	Ependymal Cell	http://purl.obolibrary.org/obo/CL_0000065	ependymal cell
+http://purl.obolibrary.org/obo/NCIT_C12578	Epithelial Cell	http://purl.obolibrary.org/obo/CL_0000066	epithelial cell
+http://purl.obolibrary.org/obo/NCIT_C13124	Epithelial Reticular Cell	http://purl.obolibrary.org/obo/CL_0002293	epithelial cell of thymus
+http://purl.obolibrary.org/obo/NCIT_C12527	Erythroblast	http://purl.obolibrary.org/obo/CL_0000765	erythroblast
+http://purl.obolibrary.org/obo/NCIT_C12521	Erythrocyte	http://purl.obolibrary.org/obo/CL_0000232	erythrocyte
+http://purl.obolibrary.org/obo/NCIT_C12526	Erythroid Stem Cell	http://purl.obolibrary.org/obo/CL_0000038	erythroid progenitor cell
+http://purl.obolibrary.org/obo/NCIT_C12596	Eukaryotic Cell	http://purl.obolibrary.org/obo/CL_0000255	eukaryotic cell
+http://purl.obolibrary.org/obo/NCIT_C93173	Exocrine Pancreas Cell	http://purl.obolibrary.org/obo/CL_1001433	epithelial cell of exocrine pancreas
+http://purl.obolibrary.org/obo/NCIT_C32572	Extraglomerular Mesangial Cell	http://purl.obolibrary.org/obo/CL_0002173	extraglomerular mesangial cell
+http://purl.obolibrary.org/obo/NCIT_C12613	Fast-Twitch Muscle Fiber	http://purl.obolibrary.org/obo/CL_0002212	type II muscle cell
+http://purl.obolibrary.org/obo/NCIT_C12482	Fibroblast	http://purl.obolibrary.org/obo/CL_0000057	fibroblast
+http://purl.obolibrary.org/obo/NCIT_C120463	Fibrocyte	http://purl.obolibrary.org/obo/CL_0000135	fibrocyte
+http://purl.obolibrary.org/obo/NCIT_C12622	Follicular Dendritic Cell	http://purl.obolibrary.org/obo/CL_0000442	follicular dendritic cell
+http://purl.obolibrary.org/obo/NCIT_C12577	G-Cell	http://purl.obolibrary.org/obo/CL_0000508	type G enteroendocrine cell
+http://purl.obolibrary.org/obo/NCIT_C12646	Gamma Motor Neuron	http://purl.obolibrary.org/obo/CL_0000717	fusimotor neuron
+http://purl.obolibrary.org/obo/NCIT_C39585	Gamma/Delta T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000798	gamma-delta T cell
+http://purl.obolibrary.org/obo/NCIT_C12597	Germ Cell	http://purl.obolibrary.org/obo/CL_0000586	germ cell
+http://purl.obolibrary.org/obo/NCIT_C38335	Germinal Center B-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000844	germinal center B cell
+http://purl.obolibrary.org/obo/NCIT_C12615	Glial Cell	http://purl.obolibrary.org/obo/CL_0000125	glial cell
+http://purl.obolibrary.org/obo/NCIT_C32685	Glomerular Mesangial Cell	http://purl.obolibrary.org/obo/CL_1000742	glomerular mesangial cell
+http://purl.obolibrary.org/obo/NCIT_C12586	Goblet Cell	http://purl.obolibrary.org/obo/CL_0000160	goblet cell
+http://purl.obolibrary.org/obo/NCIT_C32691	Gonadotroph Cell	http://purl.obolibrary.org/obo/CL_0000437	gonadtroph
+http://purl.obolibrary.org/obo/NCIT_C12530	Granulocyte	http://purl.obolibrary.org/obo/CL_0000094	granulocyte
+http://purl.obolibrary.org/obo/NCIT_C12587	Granulosa Cell	http://purl.obolibrary.org/obo/CL_0000501	granulosa cell
+http://purl.obolibrary.org/obo/NCIT_C32693	Granulosa Lutein Cell	http://purl.obolibrary.org/obo/CL_0000592	large luteal cell
+http://purl.obolibrary.org/obo/NCIT_C12629	Hair Cell	http://purl.obolibrary.org/obo/CL_0000855	sensory hair cell
+http://purl.obolibrary.org/obo/NCIT_C12538	Helper-Inducer T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000912	helper T cell
+http://purl.obolibrary.org/obo/NCIT_C12551	Hematopoietic Stem Cell	http://purl.obolibrary.org/obo/CL_0000037	hematopoietic stem cell
+http://purl.obolibrary.org/obo/NCIT_C32734	Hepatic Stellate Cell	http://purl.obolibrary.org/obo/CL_0000632	hepatic stellate cell
+http://purl.obolibrary.org/obo/NCIT_C12588	Hepatocyte	http://purl.obolibrary.org/obo/CL_0000182	hepatocyte
+http://purl.obolibrary.org/obo/NCIT_C12563	Histiocyte	http://purl.obolibrary.org/obo/CL_0000864	tissue-resident macrophage
+http://purl.obolibrary.org/obo/NCIT_C32766	Immature B-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000816	immature B cell
+http://purl.obolibrary.org/obo/NCIT_C38325	Immature T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000893	thymocyte
+http://purl.obolibrary.org/obo/NCIT_C132890	Immune Cell	http://purl.obolibrary.org/obo/CL_0000738	leukocyte
+http://purl.obolibrary.org/obo/NCIT_C32812	Inner Supporting Cell	http://purl.obolibrary.org/obo/CL_0005015	inner phalangeal cell
+http://purl.obolibrary.org/obo/NCIT_C13146	Intercalated Cell	http://purl.obolibrary.org/obo/CL_0005010	renal intercalated cell
+http://purl.obolibrary.org/obo/NCIT_C38336	Interdigitating Dendritic Cell	http://purl.obolibrary.org/obo/CL_0000990	conventional dendritic cell
+http://purl.obolibrary.org/obo/NCIT_C12625	Interneuron	http://purl.obolibrary.org/obo/CL_0000099	interneuron
+http://purl.obolibrary.org/obo/NCIT_C32870	Interstitial Cell	http://purl.obolibrary.org/obo/CL_0000178	Leydig cell
+http://purl.obolibrary.org/obo/NCIT_C32871	Interstitial Cell of Cajal	http://purl.obolibrary.org/obo/CL_0002088	interstitial cell of Cajal
+http://purl.obolibrary.org/obo/NCIT_C32872	Interstitial Cell of the Pineal Gland	http://purl.obolibrary.org/obo/CL_0002220	interstitial cell of pineal gland
+http://purl.obolibrary.org/obo/NCIT_C13161	Juxtaglomerular Cell	http://purl.obolibrary.org/obo/CL_0000648	kidney granular cell
+http://purl.obolibrary.org/obo/NCIT_C12589	Keratinocyte	http://purl.obolibrary.org/obo/CL_0000312	keratinocyte
+http://purl.obolibrary.org/obo/NCIT_C12564	Kupffer Cell	http://purl.obolibrary.org/obo/CL_0000091	Kupffer cell
+http://purl.obolibrary.org/obo/NCIT_C32911	Lactotroph Cell	http://purl.obolibrary.org/obo/CL_0002311	mammotroph
+http://purl.obolibrary.org/obo/NCIT_C12584	Langerhans Cell	http://purl.obolibrary.org/obo/CL_0000453	Langerhans cell
+http://purl.obolibrary.org/obo/NCIT_C12529	Leukocyte	http://purl.obolibrary.org/obo/CL_0000738	leukocyte
+http://purl.obolibrary.org/obo/NCIT_C12609	Leydig Cell	http://purl.obolibrary.org/obo/CL_0000178	Leydig cell
+http://purl.obolibrary.org/obo/NCIT_C12610	Lutein Cell	http://purl.obolibrary.org/obo/CL_0000175	luteal cell
+http://purl.obolibrary.org/obo/NCIT_C12535	Lymphocyte	http://purl.obolibrary.org/obo/CL_0000542	lymphocyte
+http://purl.obolibrary.org/obo/NCIT_C123783	M2 Macrophage	http://purl.obolibrary.org/obo/CL_0000890	alternatively activated macrophage
+http://purl.obolibrary.org/obo/NCIT_C12558	Macrophage	http://purl.obolibrary.org/obo/CL_0000235	macrophage
+http://purl.obolibrary.org/obo/NCIT_C38729	Marginal Zone B-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000845	marginal zone B cell
+http://purl.obolibrary.org/obo/NCIT_C12747	Mast Cell	http://purl.obolibrary.org/obo/CL_0000097	mast cell
+http://purl.obolibrary.org/obo/NCIT_C33058	Mature B-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000785	mature B cell
+http://purl.obolibrary.org/obo/NCIT_C33061	Mature T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0002419	mature T cell
+http://purl.obolibrary.org/obo/NCIT_C33063	Mechanoreceptor Cell	http://purl.obolibrary.org/obo/CL_0000199	mechanoreceptor cell
+http://purl.obolibrary.org/obo/NCIT_C13122	Megakaryoblast	http://purl.obolibrary.org/obo/CL_0000553	megakaryocyte progenitor cell
+http://purl.obolibrary.org/obo/NCIT_C12553	Megakaryocyte	http://purl.obolibrary.org/obo/CL_0000556	megakaryocyte
+http://purl.obolibrary.org/obo/NCIT_C85503	Melanoblast	http://purl.obolibrary.org/obo/CL_0000541	melanoblast
+http://purl.obolibrary.org/obo/NCIT_C12591	Melanocyte	http://purl.obolibrary.org/obo/CL_0000148	melanocyte
+http://purl.obolibrary.org/obo/NCIT_C13123	Memory B-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000787	memory B cell
+http://purl.obolibrary.org/obo/NCIT_C104082	Memory T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000813	memory T cell
+http://purl.obolibrary.org/obo/NCIT_C33095	Meningothelial Cell	http://purl.obolibrary.org/obo/CL_0002379	meningothelial cell
+http://purl.obolibrary.org/obo/NCIT_C12592	Merkel Cell	http://purl.obolibrary.org/obo/CL_0000242	Merkel cell
+http://purl.obolibrary.org/obo/NCIT_C13159	Mesangial Cell	http://purl.obolibrary.org/obo/CL_0000650	mesangial cell
+http://purl.obolibrary.org/obo/NCIT_C43423	Mesenchymal Stem Cell	http://purl.obolibrary.org/obo/CL_0000134	mesenchymal stem cell
+http://purl.obolibrary.org/obo/NCIT_C33936	Mesoderm Cell	http://purl.obolibrary.org/obo/CL_0000222	mesodermal cell
+http://purl.obolibrary.org/obo/NCIT_C33104	Mesothelial Cell	http://purl.obolibrary.org/obo/CL_0000077	mesothelial cell
+http://purl.obolibrary.org/obo/NCIT_C13116	Metamyelocyte	http://purl.obolibrary.org/obo/CL_0002192	metamyelocyte
+http://purl.obolibrary.org/obo/NCIT_C12616	Microglia	http://purl.obolibrary.org/obo/CL_0000129	microglial cell
+http://purl.obolibrary.org/obo/NCIT_C13014	Monoblast	http://purl.obolibrary.org/obo/CL_0000040	monoblast
+http://purl.obolibrary.org/obo/NCIT_C12547	Monocyte	http://purl.obolibrary.org/obo/CL_0000576	monocyte
+http://purl.obolibrary.org/obo/NCIT_C12644	Motor Neuron	http://purl.obolibrary.org/obo/CL_0000100	motor neuron
+http://purl.obolibrary.org/obo/NCIT_C13142	Mucus-Secreting Cell	http://purl.obolibrary.org/obo/CL_0000319	mucus secreting cell
+http://purl.obolibrary.org/obo/NCIT_C33143	Multipolar Neuron	http://purl.obolibrary.org/obo/CL_0000104	multipolar neuron
+http://purl.obolibrary.org/obo/NCIT_C43419	Multipotent Stem Cell	http://purl.obolibrary.org/obo/CL_0000048	multi fate stem cell
+http://purl.obolibrary.org/obo/NCIT_C12612	Muscle Cell	http://purl.obolibrary.org/obo/CL_0000187	muscle cell
+http://purl.obolibrary.org/obo/NCIT_C13015	Myeloblast	http://purl.obolibrary.org/obo/CL_0000835	myeloblast
+http://purl.obolibrary.org/obo/NCIT_C13115	Myelocyte	http://purl.obolibrary.org/obo/CL_0002193	myelocyte
+http://purl.obolibrary.org/obo/NCIT_C12549	Myeloid Cell	http://purl.obolibrary.org/obo/CL_0000763	myeloid cell
+http://purl.obolibrary.org/obo/NCIT_C33151	Myoblast	http://purl.obolibrary.org/obo/CL_0000056	myoblast
+http://purl.obolibrary.org/obo/NCIT_C33152	Myoepithelial Cell	http://purl.obolibrary.org/obo/CL_0000185	myoepithelial cell
+http://purl.obolibrary.org/obo/NCIT_C33152	Myoepithelial Cell	http://purl.obolibrary.org/obo/CL_0000118	basket cell
+http://purl.obolibrary.org/obo/NCIT_C38337	Naive Pregerminal Center B-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000788	naive B cell
+http://purl.obolibrary.org/obo/NCIT_C104081	Naive T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000898	naive T cell
+http://purl.obolibrary.org/obo/NCIT_C12536	Natural Killer Cell	http://purl.obolibrary.org/obo/CL_0000623	natural killer cell
+http://purl.obolibrary.org/obo/NCIT_C33937	Neural Crest Cell	http://purl.obolibrary.org/obo/CL_0011012	neural crest cell
+http://purl.obolibrary.org/obo/NCIT_C12985	Neural Stem Cell	http://purl.obolibrary.org/obo/CL_0000047	neuronal stem cell
+http://purl.obolibrary.org/obo/NCIT_C12991	Neuroblast	http://purl.obolibrary.org/obo/CL_0000031	neuroblast
+http://purl.obolibrary.org/obo/NCIT_C12485	Neuroendocrine Cell	http://purl.obolibrary.org/obo/CL_0000165	neuroendocrine cell
+http://purl.obolibrary.org/obo/NCIT_C12623	Neuron	http://purl.obolibrary.org/obo/CL_0000540	neuron
+http://purl.obolibrary.org/obo/NCIT_C12533	Neutrophil	http://purl.obolibrary.org/obo/CL_0000775	neutrophil
+http://purl.obolibrary.org/obo/NCIT_C12647	Nitrergic Neuron	http://purl.obolibrary.org/obo/CL_0000528	nitrergic neuron
+http://purl.obolibrary.org/obo/NCIT_C12567	Odontoblast	http://purl.obolibrary.org/obo/CL_0000060	odontoblast
+http://purl.obolibrary.org/obo/NCIT_C13150	Olfactory Epithelial Cell	http://purl.obolibrary.org/obo/CL_0002167	olfactory epithelial cell
+http://purl.obolibrary.org/obo/NCIT_C13151	Olfactory Receptor Cell	http://purl.obolibrary.org/obo/CL_0000207	olfactory receptor cell
+http://purl.obolibrary.org/obo/NCIT_C12633	Olfactory Receptor Neuron	http://purl.obolibrary.org/obo/CL_0000207	olfactory receptor cell
+http://purl.obolibrary.org/obo/NCIT_C12618	Oligodendrocyte	http://purl.obolibrary.org/obo/CL_0000128	oligodendrocyte
+http://purl.obolibrary.org/obo/NCIT_C12598	Oocyte	http://purl.obolibrary.org/obo/CL_0000023	oocyte
+http://purl.obolibrary.org/obo/NCIT_C12568	Osteoblast	http://purl.obolibrary.org/obo/CL_0000062	osteoblast
+http://purl.obolibrary.org/obo/NCIT_C12570	Osteoclast	http://purl.obolibrary.org/obo/CL_0000092	osteoclast
+http://purl.obolibrary.org/obo/NCIT_C12569	Osteocyte	http://purl.obolibrary.org/obo/CL_0000137	osteocyte
+http://purl.obolibrary.org/obo/NCIT_C33240	Outer Supporting Cell	http://purl.obolibrary.org/obo/CL_0000635	Deiter's cell
+http://purl.obolibrary.org/obo/NCIT_C12654	Oxyphil Cell	http://purl.obolibrary.org/obo/CL_0002198	oncocyte
+http://purl.obolibrary.org/obo/NCIT_C33254	Pancreatic Centroacinar Cell	http://purl.obolibrary.org/obo/CL_0002080	pancreatic centro-acinar cell
+http://purl.obolibrary.org/obo/NCIT_C107531	Pancreatic Stellate Cell	http://purl.obolibrary.org/obo/CL_0002410	pancreatic stellate cell
+http://purl.obolibrary.org/obo/NCIT_C12593	Paneth Cell	http://purl.obolibrary.org/obo/CL_0000510	paneth cell
+http://purl.obolibrary.org/obo/NCIT_C33266	Parathyroid Gland Chief Cell	http://purl.obolibrary.org/obo/CL_0000446	chief cell of parathyroid gland
+http://purl.obolibrary.org/obo/NCIT_C33269	Parathyroid Gland Oxyphil Cell	http://purl.obolibrary.org/obo/CL_0002199	oxyphil cell of parathyroid gland
+http://purl.obolibrary.org/obo/NCIT_C12594	Parietal Cell	http://purl.obolibrary.org/obo/CL_0000162	parietal cell
+http://purl.obolibrary.org/obo/NCIT_C12656	Pericyte	http://purl.obolibrary.org/obo/CL_0000669	pericyte cell
+http://purl.obolibrary.org/obo/NCIT_C41416	Perineural Cell	http://purl.obolibrary.org/obo/CL_0002576	perineural cell
+http://purl.obolibrary.org/obo/NCIT_C12619	Perineuronal Satellite Cell	http://purl.obolibrary.org/obo/CL_0000516	perineuronal satellite cell
+http://purl.obolibrary.org/obo/NCIT_C12954	Peripheral Blood Mononuclear Cell	http://purl.obolibrary.org/obo/CL_2000001	peripheral blood mononuclear cell
+http://purl.obolibrary.org/obo/NCIT_C12946	Peripheral Blood Stem Cell	http://purl.obolibrary.org/obo/CL_0002246	peripheral blood stem cell
+http://purl.obolibrary.org/obo/NCIT_C12566	Peritoneal Macrophage	http://purl.obolibrary.org/obo/CL_0000581	peritoneal macrophage
+http://purl.obolibrary.org/obo/NCIT_C33310	Peritoneal Mesothelial Cell	http://purl.obolibrary.org/obo/CL_1000490	mesothelial cell of peritoneum
+http://purl.obolibrary.org/obo/NCIT_C12657	Phagocytic Cell	http://purl.obolibrary.org/obo/CL_0000234	phagocyte
+http://purl.obolibrary.org/obo/NCIT_C12634	Photoreceptor Cell	http://purl.obolibrary.org/obo/CL_0000210	photoreceptor cell
+http://purl.obolibrary.org/obo/NCIT_C33322	Pillar Cell	http://purl.obolibrary.org/obo/CL_1000191	pillar cell
+http://purl.obolibrary.org/obo/NCIT_C33323	Pineocyte	http://purl.obolibrary.org/obo/CL_0000652	pinealocyte
+http://purl.obolibrary.org/obo/NCIT_C45919	Pituicyte	http://purl.obolibrary.org/obo/CL_0000645	pituicyte
+http://purl.obolibrary.org/obo/NCIT_C12486	Plasma Cell	http://purl.obolibrary.org/obo/CL_0000786	plasma cell
+http://purl.obolibrary.org/obo/NCIT_C45236	Plasmacytoid Monocyte	http://purl.obolibrary.org/obo/CL_0000784	plasmacytoid dendritic cell
+http://purl.obolibrary.org/obo/NCIT_C12520	Platelet	http://purl.obolibrary.org/obo/CL_0000233	platelet
+http://purl.obolibrary.org/obo/NCIT_C33330	Pleural Mesothelial Cell	http://purl.obolibrary.org/obo/CL_1000491	mesothelial cell of pleura
+http://purl.obolibrary.org/obo/NCIT_C12977	Pluripotent Stem Cell	http://purl.obolibrary.org/obo/CL_0002248	pluripotent stem cell
+http://purl.obolibrary.org/obo/NCIT_C33334	Podocyte	http://purl.obolibrary.org/obo/CL_0000653	glomerular visceral epithelial cell
+http://purl.obolibrary.org/obo/NCIT_C13131	Polychromatophilic Erythroblast	http://purl.obolibrary.org/obo/CL_0000550	polychromatophilic erythroblast
+http://purl.obolibrary.org/obo/NCIT_C33391	Pre-B Lymphocyte	http://purl.obolibrary.org/obo/CL_0000955	pre-B-II cell
+http://purl.obolibrary.org/obo/NCIT_C12600	Primary Oocyte	http://purl.obolibrary.org/obo/CL_0000654	primary oocyte
+http://purl.obolibrary.org/obo/NCIT_C33401	Primordial Germ Cell	http://purl.obolibrary.org/obo/CL_0000670	primordial germ cell
+http://purl.obolibrary.org/obo/NCIT_C13129	Proerythroblast	http://purl.obolibrary.org/obo/CL_0000547	proerythroblast
+http://purl.obolibrary.org/obo/NCIT_C13121	Promonocyte	http://purl.obolibrary.org/obo/CL_0000559	promonocyte
+http://purl.obolibrary.org/obo/NCIT_C13114	Promyelocyte	http://purl.obolibrary.org/obo/CL_0000836	promyelocyte
+http://purl.obolibrary.org/obo/NCIT_C12651	Purkinje Cell	http://purl.obolibrary.org/obo/CL_0000121	Purkinje cell
+http://purl.obolibrary.org/obo/NCIT_C12652	Pyramidal Cell	http://purl.obolibrary.org/obo/CL_0000598	pyramidal neuron
+http://purl.obolibrary.org/obo/NCIT_C13156	Receptor Cell	http://purl.obolibrary.org/obo/CL_0000197	receptor cell
+http://purl.obolibrary.org/obo/NCIT_C113502	Regulatory B Cell	http://purl.obolibrary.org/obo/CL_0000969	regulatory B cell
+http://purl.obolibrary.org/obo/NCIT_C13057	Reticular Cell	http://purl.obolibrary.org/obo/CL_0000432	reticular cell
+http://purl.obolibrary.org/obo/NCIT_C12528	Reticulocyte	http://purl.obolibrary.org/obo/CL_0000558	reticulocyte
+http://purl.obolibrary.org/obo/NCIT_C12642	Retinal Ganglion Cell	http://purl.obolibrary.org/obo/CL_0000740	retinal ganglion cell
+http://purl.obolibrary.org/obo/NCIT_C12620	Schwann Cell	http://purl.obolibrary.org/obo/CL_0002573	Schwann cell
+http://purl.obolibrary.org/obo/NCIT_C43337	Sebocyte	http://purl.obolibrary.org/obo/CL_0000317	sebum secreting cell
+http://purl.obolibrary.org/obo/NCIT_C33523	Secondary Oocyte	http://purl.obolibrary.org/obo/CL_0000655	secondary oocyte
+http://purl.obolibrary.org/obo/NCIT_C13055	Secretory Cell	http://purl.obolibrary.org/obo/CL_0000151	secretory cell
+http://purl.obolibrary.org/obo/NCIT_C12628	Sensory Neuron	http://purl.obolibrary.org/obo/CL_0000101	sensory neuron
+http://purl.obolibrary.org/obo/NCIT_C12595	Sertoli Cell	http://purl.obolibrary.org/obo/CL_0000216	Sertoli cell
+http://purl.obolibrary.org/obo/NCIT_C33558	Skeletal Fiber	http://purl.obolibrary.org/obo/CL_0008002	skeletal muscle fiber
+http://purl.obolibrary.org/obo/NCIT_C48687	Skeletal Muscle Cell	http://purl.obolibrary.org/obo/CL_0000188	cell of skeletal muscle
+http://purl.obolibrary.org/obo/NCIT_C12614	Slow-Twitch Muscle Fiber	http://purl.obolibrary.org/obo/CL_0002211	type I muscle cell
+http://purl.obolibrary.org/obo/NCIT_C33566	Small Intestinal Glandular Cell	http://purl.obolibrary.org/obo/CL_1001598	small intestine glandular cell
+http://purl.obolibrary.org/obo/NCIT_C33567	Small Intestinal Goblet Cell	http://purl.obolibrary.org/obo/CL_1000495	small intestine goblet cell
+http://purl.obolibrary.org/obo/NCIT_C13001	Smooth Muscle Cell	http://purl.obolibrary.org/obo/CL_0000192	smooth muscle cell
+http://purl.obolibrary.org/obo/NCIT_C12949	Somatic Cell	http://purl.obolibrary.org/obo/CL_0002371	somatic cell
+http://purl.obolibrary.org/obo/NCIT_C33578	Somatotroph Cell	http://purl.obolibrary.org/obo/CL_0002312	somatotroph
+http://purl.obolibrary.org/obo/NCIT_C12604	Spermatid	http://purl.obolibrary.org/obo/CL_0000018	spermatid
+http://purl.obolibrary.org/obo/NCIT_C12605	Spermatocyte	http://purl.obolibrary.org/obo/CL_0000017	spermatocyte
+http://purl.obolibrary.org/obo/NCIT_C12606	Spermatogonium	http://purl.obolibrary.org/obo/CL_0000020	spermatogonium
+http://purl.obolibrary.org/obo/NCIT_C12602	Spermatozoon	http://purl.obolibrary.org/obo/CL_0000019	sperm
+http://purl.obolibrary.org/obo/NCIT_C12951	Splenocyte	http://purl.obolibrary.org/obo/CL_2000074	splenocyte
+http://purl.obolibrary.org/obo/NCIT_C13144	Squamous Alveolar Lining Cell	http://purl.obolibrary.org/obo/CL_0002062	type I pneumocyte
+http://purl.obolibrary.org/obo/NCIT_C12662	Stem Cell	http://purl.obolibrary.org/obo/CL_0000034	stem cell
+http://purl.obolibrary.org/obo/NCIT_C33637	Striated Muscle Cell	http://purl.obolibrary.org/obo/CL_0000737	striated muscle cell
+http://purl.obolibrary.org/obo/NCIT_C12571	Stromal Cell	http://purl.obolibrary.org/obo/CL_0000499	stromal cell
+http://purl.obolibrary.org/obo/NCIT_C12590	Supporting Cell of Organ of Corti	http://purl.obolibrary.org/obo/CL_0002490	organ of Corti supporting cell
+http://purl.obolibrary.org/obo/NCIT_C13059	Synovial Cell	http://purl.obolibrary.org/obo/CL_0000214	synovial cell
+http://purl.obolibrary.org/obo/NCIT_C113815	T Helper 17 Cell	http://purl.obolibrary.org/obo/CL_0000899	T-helper 17 cell
+http://purl.obolibrary.org/obo/NCIT_C12476	T-Lymphocyte	http://purl.obolibrary.org/obo/CL_0000084	T cell
+http://purl.obolibrary.org/obo/NCIT_C13147	Taste Bud Cell	http://purl.obolibrary.org/obo/CL_0000209	taste receptor cell
+http://purl.obolibrary.org/obo/NCIT_C12572	Theca Cell	http://purl.obolibrary.org/obo/CL_0000503	theca cell
+http://purl.obolibrary.org/obo/NCIT_C33761	Theca Lutein Cell	http://purl.obolibrary.org/obo/CL_0000590	small luteal cell
+http://purl.obolibrary.org/obo/NCIT_C33771	Thymic Epithelial Cell	http://purl.obolibrary.org/obo/CL_0002293	epithelial cell of thymus
+http://purl.obolibrary.org/obo/NCIT_C45702	Thymic Medullary Epithelial Cell	http://purl.obolibrary.org/obo/CL_0002365	medullary thymic epithelial cell
+http://purl.obolibrary.org/obo/NCIT_C12994	Thymocyte	http://purl.obolibrary.org/obo/CL_0000893	thymocyte
+http://purl.obolibrary.org/obo/NCIT_C33783	Thyroid Gland Follicular Cell	http://purl.obolibrary.org/obo/CL_0002258	thyroid follicular cell
+http://purl.obolibrary.org/obo/NCIT_C33925	Thyroid Gland Oxyphil Cell	http://purl.obolibrary.org/obo/CL_0002200	oxyphil cell of thyroid
+http://purl.obolibrary.org/obo/NCIT_C33786	Thyrotroph Cell	http://purl.obolibrary.org/obo/CL_0000476	thyrotroph
+http://purl.obolibrary.org/obo/NCIT_C33796	Totipotent Neuroepithelial Stem Cell	http://purl.obolibrary.org/obo/CL_0002259	neuroepithelial stem cell
+http://purl.obolibrary.org/obo/NCIT_C12978	Totipotent Stem Cell	http://purl.obolibrary.org/obo/CL_0000052	totipotent stem cell
+http://purl.obolibrary.org/obo/NCIT_C33917	Trophoblastic Cell	http://purl.obolibrary.org/obo/CL_0000351	trophoblast cell
+http://purl.obolibrary.org/obo/NCIT_C12539	Type 1 Helper Cell	http://purl.obolibrary.org/obo/CL_0000545	T-helper 1 cell
+http://purl.obolibrary.org/obo/NCIT_C126755	Type 1 Regulatory T-Cell	http://purl.obolibrary.org/obo/CL_0000901	Tr1 cell
+http://purl.obolibrary.org/obo/NCIT_C12540	Type 2 Helper Cell	http://purl.obolibrary.org/obo/CL_0000546	T-helper 2 cell
+http://purl.obolibrary.org/obo/NCIT_C12630	Type I Hair Cell	http://purl.obolibrary.org/obo/CL_0002070	type I vestibular sensory cell
+http://purl.obolibrary.org/obo/NCIT_C12631	Type II Hair Cell	http://purl.obolibrary.org/obo/CL_0002069	type II vestibular sensory cell
+http://purl.obolibrary.org/obo/NCIT_C33834	Unipolar Neuron	http://purl.obolibrary.org/obo/CL_0000106	unipolar neuron
+http://purl.obolibrary.org/obo/NCIT_C33841	Urothelial Cell	http://purl.obolibrary.org/obo/CL_0000731	urothelial cell
+http://purl.obolibrary.org/obo/NCIT_C12632	Vestibular Hair Cell	http://purl.obolibrary.org/obo/CL_0000609	vestibular hair cell
+http://purl.obolibrary.org/obo/NCIT_C33933	Yolk Cell	http://purl.obolibrary.org/obo/CL_0000428	yolk cell
+http://purl.obolibrary.org/obo/NCIT_C12601	Zygote	http://purl.obolibrary.org/obo/CL_0000365	animal zygote
