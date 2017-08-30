@@ -1,7 +1,7 @@
 import csv
 import re
 
-subjectpattern = ('<http://purl.library.org/obo/NCIT_')
+subjectpattern = ('<http://purl.obolibrary.org/obo/NCIT_')
 predobjpattern = ('<http://www.geneontology.org/formats/oboInOwl#inSubset> <http://purl.obolibrary.org/obo/ncit#oncotree_slim> .')
 
 def oncotree():
