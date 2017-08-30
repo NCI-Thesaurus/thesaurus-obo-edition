@@ -4,9 +4,9 @@ classes:
   Thing: 'owl:Thing'
   
 vars:
-  cl: Thing
+  external: Thing
   
 equivalentTo: 
   text: "%s" 
   vars:
-    - 'cl'
+    - 'external'

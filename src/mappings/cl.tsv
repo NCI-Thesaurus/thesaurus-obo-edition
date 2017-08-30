@@ -1,4 +1,4 @@
-defined_class	defined_class_label	cl	cl_label
+defined_class	defined_class_label	external	external_label
 http://purl.obolibrary.org/obo/NCIT_C13077	Acinar Cell	http://purl.obolibrary.org/obo/CL_0000622	acinar cell
 http://purl.obolibrary.org/obo/NCIT_C12556	Adipocyte	http://purl.obolibrary.org/obo/CL_0000136	fat cell
 http://purl.obolibrary.org/obo/NCIT_C12556	Adipocyte	http://purl.obolibrary.org/obo/CL_0000632	hepatic stellate cell
