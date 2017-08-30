@@ -1,11 +1,12 @@
+import sys
 import csv
 import re
 
 subjectpattern = ('<http://purl.obolibrary.org/obo/NCIT_')
 predobjpattern = ('<http://www.geneontology.org/formats/oboInOwl#inSubset> <http://purl.obolibrary.org/obo/ncit#oncotree_slim> .')
 
-def oncotree():
-    with open('tumor_types.txt', newline='') as oncotreedata: #open the oncotree data
+def oncotree(infile, outfile):
+    with open(infile, newline='') as oncotreedata: #open the oncotree data
         myreader = csv.reader(oncotreedata, delimiter='\t') #read the file in and tell python it is a tab-delimited file
         ncidlist = [] #create a new empty list which we will put stuff in later
         next(myreader) #strips header row
@@ -20,9 +21,9 @@ def oncotree():
 
 
 
-        with open('oncotreerdf.rdf', 'w') as rdfoutput: #open a new file to write to
+        with open(outfile, 'w') as rdfoutput: #open a new file to write to
             for ncid2 in ncidlist2: #for each nci-id, write a triple composed of the above and below patterns
                 spiffytriples = (subjectpattern + ncid2 + '> ' + predobjpattern + '\n') #ultimate pattern which combines subject, predobj, and a newline
                 rdfoutput.write(spiffytriples) #write that sucker to the file
 
-oncotree()
+oncotree(sys.argv[1], sys.argv[2])

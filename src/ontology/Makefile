@@ -20,7 +20,7 @@ all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon
 $(SRC):
 	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
 
-$(NCIT): $(SRC)
+$(NCIT): $(SRC) oncotree.nt
 	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/make_role_classes_obolete.rq &&\
@@ -30,6 +30,7 @@ $(NCIT): $(SRC)
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-iri.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-version-iri.rq &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle additions.ttl &&\
+	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle oncotree.nt &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-iris-to-obo-style.rq &&\
 	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=turtle ncit-edit.ttl &&\
 	robot reason -i ncit-edit.ttl -r elk reduce -r elk -o $@
@@ -67,3 +68,9 @@ ncit-plus.owl: $(NCIT)
 	owltools ncit-plus-tmp.owl imports.ofn --add-imports-from-supports --extract-module -c -s 'http://github.com/NCI-Thesaurus/thesaurus-obo-edition/imports.owl' -o import_extract.owl &&\
 	robot merge --input ncit-plus-tmp.owl --input import_extract.owl --output ncit-plus-tmp.owl &&\
 	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk reduce -r elk -o $@ && rm ncit-plus-tmp.owl
+	
+tumor_types.txt:
+	curl -O --header "Accept: text/plain" "http://www.cbioportal.org/oncotree/api/tumor_types.txt"
+
+oncotree.nt: tumor_types.txt
+	python3 ../python/oncotreestuff.py tumor_types.txt oncotree.nt
