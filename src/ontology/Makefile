@@ -47,6 +47,7 @@ ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph-redundant.ttl
 
 ncit.obo: $(NCIT)
+	export OWLTOOLS_MEMORY=16G &&\
 	owltools ncit.owl -o -f obo ncit.obo.tmp && grep -v ^owl-axioms ncit.obo.tmp >$@
 
 ncit-bridge-to-cl.owl:
@@ -60,7 +61,9 @@ ncit-bridge-to-uberon.owl:
 	robot annotate --input ncit-uberon-bridge.ofn --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --output $@ && rm ncit-uberon-bridge.ofn
 
 ncit-plus.owl: $(NCIT)
-	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G &&\
+	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G && export OWLTOOLS_MEMORY=16G &&\
 	ncit-utils replace-mapped-terms --mappings=../mappings/cl.tsv --ontology=ncit-edit.ttl --keep=2 --drop=0 --output=ncit-plus-tmp.owl &&\
 	ncit-utils replace-mapped-terms --mappings=../mappings/uberon.tsv --ontology=ncit-plus-tmp.owl --keep=2 --drop=0 --output=ncit-plus-tmp.owl &&\
-	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reduce -r elk -o $@ && rm ncit-plus-tmp.owl
+	owltools ncit-plus-tmp.owl imports.ofn --add-imports-from-supports --extract-module -c -s 'http://github.com/NCI-Thesaurus/thesaurus-obo-edition/imports.owl' -o import_extract.owl &&\
+	robot merge --input ncit-plus-tmp.owl --input import_extract.owl --output ncit-plus-tmp.owl &&\
+	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk reduce -r elk -o $@ && rm ncit-plus-tmp.owl
