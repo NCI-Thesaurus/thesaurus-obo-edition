@@ -13,3 +13,11 @@ obo:IAO_0000115 a owl:AnnotationProperty ;
 
 oio:hasExactSynonym a owl:AnnotationProperty ;
     rdfs:label "has exact synonym"^^xsd:string .
+
+oio:inSubset a owl:AnnotationProperty ;
+    rdfs:label "in subset"^^xsd:string .
+
+oio:SubsetProperty a owl:AnnotationProperty ;
+    rdfs:label "subset property"^^xsd:string .
+
+<http://purl.obolibrary.org/obo/ncit#oncotree_slim> rdfs:subPropertyOf oio:SubsetProperty .
