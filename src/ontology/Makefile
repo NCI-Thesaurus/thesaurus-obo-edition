@@ -70,7 +70,7 @@ ncit-plus.owl: $(NCIT)
 	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk reduce -r elk -o $@ && rm ncit-plus-tmp.owl
 	
 tumor_types.txt:
-	wget http://www.cbioportal.org/oncotree/api/tumor_types.txt
+	curl -L -O https://raw.githubusercontent.com/cBioPortal/oncotree/master/tumor_tree.txt
 
 oncotree.nt: tumor_types.txt
 	python3 ../python/oncotreestuff.py tumor_types.txt oncotree.nt
