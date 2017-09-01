@@ -38,7 +38,9 @@ $(NCIT): $(SRC) oncotree.nt
 ncit-property-graph.ttl: $(NCIT)
 	export JAVA_OPTS=-Xmx80G &&\
 	ncit-utils materialize-property-expressions ncit.owl $@.tmp ncit-property-graph-redundant.ttl.tmp &&\
-	mv $@.tmp $@ && touch $@ && mv ncit-property-graph-redundant.ttl.tmp ncit-property-graph-redundant.ttl && touch ncit-property-graph-redundant.ttl
+	mv $@.tmp $@ && mv ncit-property-graph-redundant.ttl.tmp ncit-property-graph-redundant.ttl &&\
+	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --output $@ &&\
+	robot annotate --input ncit-property-graph-redundant.ttl --ontology-iri $(PREFIX)/ncit-property-graph-redundant.ttl --output ncit-property-graph-redundant.ttl
 
 ncit-plus-property-graph.ttl: ncit-plus.owl
 	export JAVA_OPTS=-Xmx80G &&\
@@ -47,14 +49,15 @@ ncit-plus-property-graph.ttl: ncit-plus.owl
 	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --output $@ &&\
 	robot annotate --input ncit-plus-property-graph-redundant.ttl --ontology-iri $(PREFIX)/ncit-plus-property-graph-redundant.ttl --output ncit-plus-property-graph-redundant.ttl
 
-ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl ncit-plus-property-graph.ttl
+ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl ncit-plus.owl ncit-plus-property-graph.ttl
 	export JAVA_OPTS=-Xmx16G &&\
 	rm -f $@ &&\
 	blazegraph-runner load --journal=$@ --informat=rdfxml --use-ontology-graph $(NCIT) &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph.ttl &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph-redundant.ttl &&\
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-plus.owl &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-plus-property-graph.ttl &&\
-	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph-redundant.ttl
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-plus-property-graph-redundant.ttl
 
 ncit.obo: $(NCIT)
 	export OWLTOOLS_MEMORY=16G &&\
