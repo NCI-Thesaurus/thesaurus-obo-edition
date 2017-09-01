@@ -8,6 +8,10 @@
 
 <http://purl.obolibrary.org/obo/ncit.owl> <http://purl.org/dc/terms/isVersionOf> <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl> .
 
+<http://purl.obolibrary.org/obo/ncit.owl> <http://purl.org/dc/elements/1.1/title> "NCI Thesaurus OBO Edition"^^xsd:string .
+
+<http://purl.obolibrary.org/obo/ncit.owl> <http://purl.org/dc/elements/1.1/description> "The NCIt OBO Edition project aims to increase integration of the NCIt with OBO Library ontologies. NCIt is a reference terminology that includes broad coverage of the cancer domain, including cancer related diseases, findings and abnormalities. NCIt OBO Edition releases should be considered experimental."^^xsd:string .
+
 obo:IAO_0000115 a owl:AnnotationProperty ;
     rdfs:label "definition"^^xsd:string .
 

@@ -23,6 +23,7 @@ $(SRC):
 $(NCIT): $(SRC) oncotree.nt
 	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
+	blazegraph-runner update --journal=blazegraph.jnl ../sparql/remove-date.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/make_role_classes_obolete.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-properties.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-values.rq &&\
