@@ -1,0 +1,34 @@
+PREFIX evs: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX oio: <http://www.geneontology.org/formats/oboInOwl#>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+
+DELETE {
+  ?node a owl:Restriction ;
+        owl:onProperty ?excludes_property ;
+        owl:someValuesFrom ?filler .
+}
+INSERT {
+  ?node a owl:Class ;
+        owl:complementOf [
+            a owl:Restriction ;
+            owl:onProperty ?has_property ;
+            owl:someValuesFrom ?filler
+        ] .
+  ?excludes_property owl:deprecated true .
+}
+WHERE {
+  VALUES (?excludes_property ?has_property) {
+    (NCIT:R139 NCIT:R105) # abnormal cell
+    (NCIT:R141 NCIT:R107) # cytogenetic abnormality
+    (NCIT:R142 NCIT:R108) # finding
+    (NCIT:R136 NCIT:R102) # metastatic anatomic site
+    (NCIT:R140 NCIT:R106) # molecular abnormality
+    (NCIT:R138 NCIT:R104) # normal cell origin
+    (NCIT:R137 NCIT:R103) # normal tissue origin
+    (NCIT:R135 NCIT:R101) # primary anatomic site
+  }
+  ?node a owl:Restriction ;
+        owl:onProperty ?excludes_property ;
+        owl:someValuesFrom ?filler .
+}

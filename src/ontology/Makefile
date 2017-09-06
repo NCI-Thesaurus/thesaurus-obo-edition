@@ -34,6 +34,7 @@ $(NCIT): $(SRC) oncotree.nt
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle oncotree.nt &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-iris-to-obo-style.rq &&\
 	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=turtle ncit-edit.ttl &&\
+	rm blazegraph.jnl &&\
 	robot reason -i ncit-edit.ttl -r elk -o $@
 
 ncit-property-graph.ttl: $(NCIT)
@@ -80,6 +81,10 @@ ncit-plus.owl: $(NCIT)
 	ncit-utils replace-mapped-terms --mappings=../mappings/uberon.tsv --ontology=ncit-plus-tmp.owl --keep=2 --drop=0 --output=ncit-plus-tmp.owl &&\
 	owltools ncit-plus-tmp.owl imports.ofn --add-imports-from-supports --extract-module -c -s 'http://github.com/NCI-Thesaurus/thesaurus-obo-edition/imports.owl' -o import_extract.owl &&\
 	robot merge --input ncit-plus-tmp.owl --input import_extract.owl --output ncit-plus-tmp.owl &&\
+	blazegraph-runner load   --journal=ncit-plus.jnl --informat=rdfxml ncit-plus-tmp.owl &&\
+	blazegraph-runner update --journal=ncit-plus.jnl ../sparql/convert_exclude_to_complement.rq &&\
+	blazegraph-runner dump   --journal=ncit-plus.jnl --outformat=rdfxml ncit-plus-tmp.owl &&\
+	rm ncit-plus.jnl &&\
 	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk -o $@ && rm ncit-plus-tmp.owl
 	
 tumor_types.txt:
@@ -87,3 +92,10 @@ tumor_types.txt:
 
 oncotree.nt: tumor_types.txt
 	python3 ../python/oncotreestuff.py tumor_types.txt oncotree.nt
+
+ncit-oncotree.ttl: $(NCIT)
+	owltools $(NCIT) --extract-subset oncotree_slim --remove-dangling -o ncit-oncotree.tmp.owl &&\
+	robot annotate --input ncit-oncotree.tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ -o $@ && rm ncit-oncotree.tmp.owl
+
+ncit-oncotree.obo: ncit-oncotree.ttl
+	owltools ncit-oncotree.ttl -o -f obo $@.tmp && grep -v ^owl-axioms $@.tmp >$@
