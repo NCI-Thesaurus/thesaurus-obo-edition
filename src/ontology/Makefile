@@ -34,7 +34,7 @@ $(NCIT): $(SRC) oncotree.nt
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle oncotree.nt &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-iris-to-obo-style.rq &&\
 	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=turtle ncit-edit.ttl &&\
-	robot reason -i ncit-edit.ttl -r elk reduce -r elk -o $@
+	robot reason -i ncit-edit.ttl -r elk -o $@
 
 ncit-property-graph.ttl: $(NCIT)
 	export JAVA_OPTS=-Xmx80G &&\
@@ -80,7 +80,7 @@ ncit-plus.owl: $(NCIT)
 	ncit-utils replace-mapped-terms --mappings=../mappings/uberon.tsv --ontology=ncit-plus-tmp.owl --keep=2 --drop=0 --output=ncit-plus-tmp.owl &&\
 	owltools ncit-plus-tmp.owl imports.ofn --add-imports-from-supports --extract-module -c -s 'http://github.com/NCI-Thesaurus/thesaurus-obo-edition/imports.owl' -o import_extract.owl &&\
 	robot merge --input ncit-plus-tmp.owl --input import_extract.owl --output ncit-plus-tmp.owl &&\
-	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk reduce -r elk -o $@ && rm ncit-plus-tmp.owl
+	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk -o $@ && rm ncit-plus-tmp.owl
 	
 tumor_types.txt:
 	curl -L -O http://www.cbioportal.org/oncotree/api/tumor_types.txt
