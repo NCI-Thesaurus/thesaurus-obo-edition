@@ -15,7 +15,7 @@ PREFIX=http://purl.obolibrary.org/obo/ncit
 RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
 .PHONY: all
-all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl
+all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-plus-negations.owl ncit-oncotree.ttl
 
 $(SRC):
 	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Thesaurus.owl
@@ -81,12 +81,15 @@ ncit-plus.owl: $(NCIT)
 	ncit-utils replace-mapped-terms --mappings=../mappings/uberon.tsv --ontology=ncit-plus-tmp.owl --keep=2 --drop=0 --output=ncit-plus-tmp.owl &&\
 	owltools ncit-plus-tmp.owl imports.ofn --add-imports-from-supports --extract-module -c -s 'http://github.com/NCI-Thesaurus/thesaurus-obo-edition/imports.owl' -o import_extract.owl &&\
 	robot merge --input ncit-plus-tmp.owl --input import_extract.owl --output ncit-plus-tmp.owl &&\
-	blazegraph-runner load   --journal=ncit-plus.jnl --informat=rdfxml ncit-plus-tmp.owl &&\
-	blazegraph-runner update --journal=ncit-plus.jnl ../sparql/convert_exclude_to_complement.rq &&\
-	blazegraph-runner dump   --journal=ncit-plus.jnl --outformat=rdfxml ncit-plus-tmp.owl &&\
-	rm ncit-plus.jnl &&\
 	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk -o $@ && rm ncit-plus-tmp.owl
 	
+ncit-plus-negations.owl: ncit-plus.owl
+	blazegraph-runner load   --journal=ncit-plus.jnl --informat=rdfxml ncit-plus.owl &&\
+	blazegraph-runner update --journal=ncit-plus.jnl ../sparql/convert_exclude_to_complement.rq &&\
+	blazegraph-runner dump   --journal=ncit-plus.jnl --outformat=rdfxml $@ &&\
+	rm ncit-plus.jnl &&\
+	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ -o $@
+
 tumor_types.txt:
 	curl -L -O http://www.cbioportal.org/oncotree/api/tumor_types.txt
 
