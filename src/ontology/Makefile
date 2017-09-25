@@ -14,6 +14,7 @@ DATE=$(shell date +'%Y-%m-%d')
 PREFIX=http://purl.obolibrary.org/obo/ncit
 RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
+
 .PHONY: all
 all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-plus-negations.owl ncit-oncotree.ttl
 
@@ -96,9 +97,12 @@ tumor_types.txt:
 oncotree.nt: tumor_types.txt
 	python3 ../python/oncotreestuff.py tumor_types.txt oncotree.nt
 
-ncit-oncotree.ttl: $(NCIT)
-	owltools $(NCIT) --extract-subset oncotree_slim --remove-dangling -o ncit-oncotree.tmp.owl &&\
-	robot annotate --input ncit-oncotree.tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ -o $@ && rm ncit-oncotree.tmp.owl
+oncotree_terms.txt: tumor_types.txt
+	set -e && cut -f 8 tumor_types.txt | tail -n +2 | sed 's~,~\'$$'\n~g' | sed '\~^\s*$$~d' | sed 's~^~http://purl.obolibrary.org/obo/NCIT_~' >$@
+
+ncit-oncotree.ttl: $(NCIT) oncotree_terms.txt
+	robot extract --method MIREOT --input $(NCIT) --lower-terms oncotree_terms.txt --output ncit-oncotree.tmp.ttl &&\
+	robot annotate --input ncit-oncotree.tmp.ttl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --annotation dc:title "NCIt OncoTree slim" --annotation rdfs:comment "Simplified hierarchy for terms used within OncoTree" -o $@ && rm ncit-oncotree.tmp.ttl
 
 ncit-oncotree.obo: ncit-oncotree.ttl
 	owltools ncit-oncotree.ttl -o -f obo $@.tmp && grep -v ^owl-axioms $@.tmp >$@
