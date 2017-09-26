@@ -1,0 +1,22 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX has_property: <http://purl.obolibrary.org/obo/ncit.owl#has_property>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX Malignant: <http://purl.obolibrary.org/obo/NCIT_C14143>
+PREFIX Benign: <http://purl.obolibrary.org/obo/NCIT_C14172>
+PREFIX Neoplastic_Status: <http://purl.obolibrary.org/obo/NCIT_P363>
+CONSTRUCT {
+  ?disease rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty has_property: ;
+  	  owl:someValuesFrom ?value_class
+  ] .
+  has_property: a owl:ObjectProperty .
+}
+FROM <http://purl.obolibrary.org/obo/ncit.owl>
+WHERE {
+  VALUES (?annotation_value ?value_class) {
+    ("Benign"    Benign:)
+    ("Malignant" Malignant:)
+  }
+  ?disease Neoplastic_Status: ?annotation_value .
+}
