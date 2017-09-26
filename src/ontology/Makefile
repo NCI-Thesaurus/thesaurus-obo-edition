@@ -16,7 +16,7 @@ RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
 
 .PHONY: all
-all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-plus-negations.owl ncit-oncotree.ttl ncit-oncotree.obo
+all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-plus-negations.owl ncit-oncotree.ttl ncit-oncotree.obo ncit-benign-malignant.ttl neoplasm-diff.txt
 
 $(SRC):
 	curl -1 -L -O http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl
@@ -112,3 +112,8 @@ ncit-benign-malignant.ttl: ncit-graph.jnl
 	rm -f $@ &&\
 	blazegraph-runner construct --journal=ncit-graph.jnl --outformat=turtle ../sparql/convert-benign-malignant-to-axioms.rq >ncit-benign-malignant.tmp.ttl &&\
 	robot merge --input benign-malignant-base.ttl --input ncit-benign-malignant.tmp.ttl annotate --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --annotation --annotation rdfs:comment "Conversion of benign and malignant annotations to logical axioms, for consistency testing." -o $@ && rm ncit-benign-malignant.tmp.ttl
+
+neoplasm-hierarchy-report.ttl: $(NCIT) ncit-plus.owl
+	robot query --input $(NCIT) --construct ../sparql/extract-neoplasm-hierarchy.rq --format ttl standard-neoplasm.ttl &&\
+	robot query --input ncit-plus.owl --construct ../sparql/extract-neoplasm-hierarchy.rq --format ttl plus-neoplasm.ttl &&\
+	robot diff --left standard-neoplasm.ttl --right plus-neoplasm.ttl --output neoplasm-hierarchy-report.ttl

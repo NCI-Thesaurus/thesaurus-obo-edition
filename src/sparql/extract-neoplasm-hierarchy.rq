@@ -1,0 +1,18 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX has_property: <http://purl.obolibrary.org/obo/ncit.owl#has_property>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX Malignant: <http://purl.obolibrary.org/obo/NCIT_C14143>
+PREFIX Benign: <http://purl.obolibrary.org/obo/NCIT_C14172>
+PREFIX Neoplastic_Status: <http://purl.obolibrary.org/obo/NCIT_P363>
+PREFIX Neoplasm: <http://purl.obolibrary.org/obo/NCIT_C3262>
+CONSTRUCT {
+    ?term rdfs:subClassOf ?superclass .
+    ?term rdfs:label ?term_label .
+    ?superclass rdfs:label ?super_label .
+}
+WHERE {
+  ?term rdfs:subClassOf* Neoplasm: .
+  ?term rdfs:subClassOf ?superclass .
+  ?term rdfs:label ?term_label .
+  ?superclass rdfs:label ?super_label .
+}
