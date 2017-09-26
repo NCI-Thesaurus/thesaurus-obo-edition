@@ -12,6 +12,7 @@ WHERE {
   VALUES (?old_property ?new_property) {
     (evs:P97 obo:IAO_0000115)
     (evs:P90 oio:hasExactSynonym)
+    (evs:A8  oio:inSubset)
   }
   ?s ?p ?old_property .
 }
