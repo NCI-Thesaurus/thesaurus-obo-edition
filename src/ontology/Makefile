@@ -110,7 +110,7 @@ ncit-oncotree.obo: ncit-oncotree.ttl
 ncit-benign-malignant.ttl: ncit-graph.jnl
 	export JAVA_OPTS=-Xmx16G &&\
 	rm -f $@ &&\
-	blazegraph-runner construct --journal=ncit-graph.jnl --outformat=turtle ../sparql/convert-benign-malignant-to-axioms.rq >ncit-benign-malignant.tmp.ttl &&\
+	blazegraph-runner construct --journal=ncit-graph.jnl --outformat=turtle ../sparql/convert-benign-malignant-to-axioms.rq ncit-benign-malignant.tmp.ttl &&\
 	robot merge --input benign-malignant-base.ttl --input ncit-benign-malignant.tmp.ttl annotate --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --annotation rdfs:comment "Conversion of benign and malignant annotations to logical axioms, for consistency testing." -o $@ && rm ncit-benign-malignant.tmp.ttl
 
 neoplasm-hierarchy-report.txt: $(NCIT) ncit-plus.owl
