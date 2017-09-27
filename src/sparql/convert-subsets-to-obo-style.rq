@@ -1,0 +1,12 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX evs: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX oio: <http://www.geneontology.org/formats/oboInOwl#>
+PREFIX TerminologySubset: <http://purl.obolibrary.org/obo/NCIT_C54443>
+
+INSERT {
+  ?value rdfs:subPropertyOf oio:SubsetProperty .
+}
+WHERE {
+  ?value rdfs:subClassOf+ TerminologySubset: .
+}

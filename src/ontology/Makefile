@@ -28,6 +28,7 @@ $(NCIT): $(SRC) oncotree.nt
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/make_role_classes_obolete.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-properties.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-values.rq &&\
+	blazegraph-runner update --journal=blazegraph.jnl ../sparql/convert-subsets-to-obo-style.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/fix-multiple-defs.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-iri.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-version-iri.rq &&\
