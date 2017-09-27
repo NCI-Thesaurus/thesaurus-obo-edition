@@ -121,7 +121,7 @@ neoplasm-hierarchy-report.txt: $(NCIT) ncit-plus.owl
 	robot diff --left standard-neoplasm.ttl --right plus-neoplasm.ttl --output neoplasm-hierarchy-report.txt
 
 Neoplasm_Core.txt:
-	curl -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Neoplasm/Neoplasm_Core.txt
+	curl -1 -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Neoplasm/Neoplasm_Core.txt
 
 neoplasm-terms.txt: Neoplasm_Core.txt
 	set -e && iconv -f ISO-8859-1 -t ASCII//TRANSLIT Neoplasm_Core.txt | cut -f 1 | tail -n +2 | tr -d '\r' | sed '/^$$/d' | sed 's~^~http://purl.obolibrary.org/obo/NCIT_~' >$@
