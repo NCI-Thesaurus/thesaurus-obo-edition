@@ -16,7 +16,7 @@ RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
 
 .PHONY: all
-all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-plus-negations.owl ncit-oncotree.ttl ncit-oncotree.obo ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt
+all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-plus-negations.owl ncit-oncotree.ttl ncit-oncotree.obo ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl
 
 $(SRC):
 	curl -1 -L -O http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl
@@ -118,3 +118,13 @@ neoplasm-hierarchy-report.txt: $(NCIT) ncit-plus.owl
 	robot query --format ttl --input $(NCIT) --construct ../sparql/extract-neoplasm-hierarchy.rq standard-neoplasm.ttl &&\
 	robot query --format ttl --input ncit-plus.owl --construct ../sparql/extract-neoplasm-hierarchy.rq plus-neoplasm.ttl &&\
 	robot diff --left standard-neoplasm.ttl --right plus-neoplasm.ttl --output neoplasm-hierarchy-report.txt
+
+Neoplasm_Core.txt:
+	curl -L -O https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/Neoplasm/Neoplasm_Core.txt
+
+neoplasm-terms.txt: Neoplasm_Core.txt
+	set -e && iconv -f ISO-8859-1 -t ASCII//TRANSLIT Neoplasm_Core.txt | cut -f 1 | tail -n +2 | tr -d '\r' | sed '/^$$/d' | sed 's~^~http://purl.obolibrary.org/obo/NCIT_~' >$@
+
+neoplasm-core.owl: neoplasm-terms.txt ncit-plus.owl
+	export ROBOT_JAVA_ARGS=-Xmx16G &&\
+	robot extract --method BOT --input ncit-plus.owl --term-file neoplasm-terms.txt annotate --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --annotation dc:title "NCIt Neoplasm Core Module" --annotation rdfs:comment "Module extract from NCIt OBO Edition (Plus) based on the NCIt Neoplasm Core. This module is based on the SLME BOT algorithm, starting with the list of Neoplasm Core terms." --output $@
