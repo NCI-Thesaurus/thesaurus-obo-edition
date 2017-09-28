@@ -53,7 +53,7 @@ ncit-plus-property-graph.ttl: ncit-plus.owl
 	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --output $@ &&\
 	robot annotate --input ncit-plus-property-graph-redundant.ttl --ontology-iri $(PREFIX)/ncit-plus-property-graph-redundant.ttl --output ncit-plus-property-graph-redundant.ttl
 
-ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl ncit-plus.owl ncit-plus-property-graph.ttl
+ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl ncit-plus.owl ncit-plus-property-graph.ttl monarch-data
 	export JAVA_OPTS=-Xmx16G &&\
 	rm -f $@ &&\
 	blazegraph-runner load --journal=$@ --informat=rdfxml --use-ontology-graph $(NCIT) &&\
@@ -61,7 +61,11 @@ ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl ncit-plus.owl ncit-plus-property
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph-redundant.ttl &&\
 	blazegraph-runner load --journal=$@ --informat=rdfxml --use-ontology-graph ncit-plus.owl &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-plus-property-graph.ttl &&\
-	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-plus-property-graph-redundant.ttl
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-plus-property-graph-redundant.ttl &&\
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph reactome.ttl &&\
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph coriell.ttl &&\
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncbigene.ttl &&\
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph bgee.ttl &&\
 
 ncit.obo: $(NCIT)
 	export OWLTOOLS_MEMORY=16G &&\
@@ -139,3 +143,17 @@ neoplasm-terms.txt: Neoplasm_Core.txt
 neoplasm-core.owl: neoplasm-terms.txt ncit-plus.owl
 	export ROBOT_JAVA_ARGS=-Xmx16G &&\
 	robot extract --method BOT --input ncit-plus.owl --term-file neoplasm-terms.txt annotate --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --annotation dc:title "NCIt Neoplasm Core Module" --annotation rdfs:comment "Module extract from NCIt OBO Edition (Plus) based on the NCIt Neoplasm Core. This module is based on the SLME BOT algorithm, starting with the list of Neoplasm Core terms." --output $@
+
+coriell.ttl:
+	curl -L -O https://data.monarchinitiative.org/ttl/coriell.ttl
+
+reactome.ttl:
+	curl -L -O https://data.monarchinitiative.org/ttl/reactome.ttl
+
+bgee.ttl:
+	curl -L -O https://data.monarchinitiative.org/ttl/bgee.ttl
+
+ncbigene.ttl:
+	curl -L -O https://data.monarchinitiative.org/ttl/ncbigene.ttl
+
+monarch-data: coriell.ttl reactome.ttl bgee.ttl ncbigene.ttl
