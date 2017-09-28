@@ -16,7 +16,7 @@ RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
 
 .PHONY: all
-all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-plus-negations.owl ncit-oncotree.ttl ncit-oncotree.obo ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl
+all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl ncit-oncotree.ttl ncit-oncotree.obo ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl
 
 $(SRC):
 	curl -1 -L -O http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl
@@ -85,6 +85,13 @@ ncit-plus.owl: $(NCIT)
 	robot merge --input ncit-plus-tmp.owl --input import_extract.owl --output ncit-plus-tmp.owl &&\
 	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk -o $@ && rm ncit-plus-tmp.owl
 	
+ncit-negations.owl: $(NCIT)
+	blazegraph-runner load   --journal=ncit-negations.jnl --informat=rdfxml $(NCIT) &&\
+	blazegraph-runner update --journal=ncit-negations.jnl ../sparql/convert_exclude_to_complement.rq &&\
+	blazegraph-runner dump   --journal=ncit-negations.jnl --outformat=rdfxml $@ &&\
+	rm ncit-negations.jnl &&\
+	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ -o $@
+
 ncit-plus-negations.owl: ncit-plus.owl
 	blazegraph-runner load   --journal=ncit-plus.jnl --informat=rdfxml ncit-plus.owl &&\
 	blazegraph-runner update --journal=ncit-plus.jnl ../sparql/convert_exclude_to_complement.rq &&\
