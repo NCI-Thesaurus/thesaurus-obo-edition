@@ -1,12 +1,12 @@
-##########################################################################################
-# This Makefile assumes you have blazegraph-runner, ncit-utils, dosdp-tools, robot, and owltools on your PATH.
+#########################################################################################################################
+# This Makefile assumes you have Java 8 and blazegraph-runner, ncit-utils, dosdp-tools, robot, and owltools on your PATH.
 # These can be obtained from GitHub:
 # - https://github.com/balhoff/blazegraph-runner/releases
 # - https://github.com/NCI-Thesaurus/ncit-utils/releases
 # - https://github.com/INCATools/dosdp-tools/releases
 # - https://github.com/ontodev/robot
 # - https://github.com/owlcollab/owltools/releases
-##########################################################################################
+#########################################################################################################################
 
 SRC=Thesaurus.owl
 NCIT=ncit.owl
