@@ -25,6 +25,8 @@ def:
     - gene
 
 equivalentTo:
-  text: "'has_part' some ('increased amount' and ('inheres_in' some ('mRNA' and 'transcribed_from' some %s)) and ('has_modifier' some 'abnormal'))"
+  text: "'has_part' some ('increased amount' and 
+  ('inheres_in' some ('mRNA' and 'transcribed_from' some %s)) and 
+  ('has_modifier' some 'abnormal'))"
   vars:
     - gene
