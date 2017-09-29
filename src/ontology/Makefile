@@ -65,7 +65,7 @@ ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl ncit-plus.owl ncit-plus-property
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph reactome.ttl &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph coriell.ttl &&\
 	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncbigene.ttl &&\
-	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph bgee.ttl &&\
+	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph bgee.ttl
 
 ncit.obo: $(NCIT)
 	export OWLTOOLS_MEMORY=16G &&\
