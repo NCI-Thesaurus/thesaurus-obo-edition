@@ -4,6 +4,7 @@ classes:
   increased amount: PATO:0000470
   abnormal: PATO:0000460
   mRNA: SO:0000234
+  gene: SO:0000704
 
 relations: 
   transcribed_from: RO:0002510
