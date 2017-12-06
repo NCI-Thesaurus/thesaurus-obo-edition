@@ -1,0 +1,188 @@
+1. Disease-Molecular Abnormality Assertions: http://yasgui.org/short/ByL3VZg2Z  (2281 results, 10-2-17)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX Disease_Has_Cytogenetic_Abnormality:  <http://purl.obolibrary.org/obo/NCIT_R107>
+PREFIX Disease_Has_Molecular_Abnormality:  <http://purl.obolibrary.org/obo/NCIT_R106>
+PREFIX Disease_May_Have_Cytogenetic_Abnormality:  <http://purl.obolibrary.org/obo/NCIT_R114>
+PREFIX Disease_May_Have_Molecular_Abnormality:  <http://purl.obolibrary.org/obo/NCIT_R89>
+
+SELECT DISTINCT  ?diseaseLabel ?propertyLabel ?molecAbnormalityLabel 
+FROM <http://purl.obolibrary.org/obo/ncit.owl>
+FROM <http://purl.obolibrary.org/obo/ncit/ncit-property-graph.ttl>
+
+WHERE {
+  
+VALUES ?property {
+Disease_Has_Molecular_Abnormality:
+Disease_May_Have_Molecular_Abnormality:
+Disease_Has_Cytogenetic_Abnormality:
+Disease_May_Have_Cytogenetic_Abnormality:
+  }
+?disease ?property ?molecAbnormality .
+?disease rdfs:label ?diseaseLabel .
+?molecAbnormality rdfs:label ?molecAbnormalityLabel .
+?property rdfs:label ?propertyLabel .
+}
+ORDERBY ?diseaseLabel
+
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+2. Disease-Gene/Gene Product Assertions: http://yasgui.org/short/H1xc4WxhZ (2434 results, 10-2-17)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX Disease_Mapped_To_Gene:  <http://purl.obolibrary.org/obo/NCIT_R176>
+PREFIX Gene_Associated_With_Disease:  <http://purl.obolibrary.org/obo/NCIT_R38>
+PREFIX Gene_Involved_In_Pathogenesis_Of_Disease:  <http://purl.obolibrary.org/obo/NCIT_R175>
+PREFIX Gene_Product_Malfunction_Associated_With_Disease:  <http://purl.obolibrary.org/obo/NCIT_R48>
+PREFIX DiseaseDisorder: <http://purl.obolibrary.org/obo/NCIT_C2991>
+
+SELECT DISTINCT ?diseaseLabel ?propertyLabel ?geneOrProductLabel
+FROM <http://purl.obolibrary.org/obo/ncit.owl>
+FROM <http://purl.obolibrary.org/obo/ncit/ncit-property-graph.ttl>
+WHERE {
+{
+  VALUES ?property {
+  Gene_Product_Malfunction_Associated_With_Disease:
+  Gene_Involved_In_Pathogenesis_Of_Disease:
+  Gene_Associated_With_Disease:
+  }
+?geneOrProduct ?property ?disease .
+ ?disease rdfs:subClassOf* DiseaseDisorder: .
+?disease rdfs:label ?diseaseLabel .
+?geneOrProduct rdfs:label ?geneOrProductLabel .
+?property rdfs:label ?propertyLabel .
+}
+UNION 
+{
+  VALUES ?property {
+  Disease_Mapped_To_Gene:
+  }
+?disease ?property ?geneOrProduct .
+?disease rdfs:subClassOf* DiseaseDisorder: .
+?disease rdfs:label ?diseaseLabel .
+?geneOrProduct rdfs:label ?geneOrProductLabel .
+?property rdfs:label ?propertyLabel .
+}
+}
+ORDERBY ?diseaseLabel
+
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+3. Disease-Biomarker Assertions: http://yasgui.org/short/HyRIVZg3b (51 results, 10-2-17)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX Gene_Is_Biomarker_Of:  <http://purl.obolibrary.org/obo/NCIT_R39>
+PREFIX Gene_Product_Is_Biomarker_Of:  <http://purl.obolibrary.org/obo/NCIT_R47>
+
+SELECT DISTINCT ?diseaseLabel ?propertyLabel ?geneOrProductLabel
+FROM <http://purl.obolibrary.org/obo/ncit.owl>
+FROM <http://purl.obolibrary.org/obo/ncit/ncit-property-graph.ttl>
+WHERE {
+  
+VALUES ?property {
+Gene_Product_Is_Biomarker_Of:
+Gene_Is_Biomarker_Of:
+  }
+?geneOrProduct ?property ?disease .
+?disease rdfs:label ?diseaseLabel .
+?property rdfs:label ?propertyLabel .
+?geneOrProduct rdfs:label ?geneOrProductLabel .
+}
+ORDERBY ?diseaseLabel
+
+
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+4. Disease-Molecular Finding Assertions:  http://yasgui.org/short/BJPVN-xhb (133 results, 10-2-17)
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX NCIT: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX Disease_Has_Finding:  <http://purl.obolibrary.org/obo/NCIT_R108>
+PREFIX Disease_May_Have_Finding:  <http://purl.obolibrary.org/obo/NCIT_R115>
+PREFIX GeneticFinding: <http://purl.obolibrary.org/obo/NCIT_C103223>
+PREFIX PositiveLaboratoryTestResult: <http://purl.obolibrary.org/obo/NCIT_C35682>
+PREFIX ReceptorStatus: <http://purl.obolibrary.org/obo/NCIT_C94299>
+PREFIX SignalingPathwayStatus: <http://purl.obolibrary.org/obo/NCIT_C82385>
+PREFIX NegativeTestResult: <http://purl.obolibrary.org/obo/NCIT_C35681>
+PREFIX PositiveImmunophenotypicTestResult: <http://purl.obolibrary.org/obo/NCIT_C40998>
+
+SELECT DISTINCT  ?diseaseLabel ?propertyLabel ?findingLabel
+FROM <http://purl.obolibrary.org/obo/ncit.owl>
+FROM <http://purl.obolibrary.org/obo/ncit/ncit-property-graph.ttl>
+
+WHERE {
+{
+VALUES ?property {
+Disease_Has_Finding:
+Disease_May_Have_Finding:
+}
+    
+?disease ?property ?finding .
+?property rdfs:label ?propertyLabel .
+?disease rdfs:label ?diseaseLabel .
+?finding rdfs:subClassOf* GeneticFinding: .
+?finding rdfs:label ?findingLabel .
+}
+UNION
+{
+VALUES ?property {
+Disease_Has_Finding:
+Disease_May_Have_Finding:
+}
+?disease ?property ?finding .
+?property rdfs:label ?propertyLabel .
+?disease rdfs:label ?diseaseLabel .
+?finding rdfs:subClassOf* ReceptorStatus: .
+?finding rdfs:label ?findingLabel .
+}
+UNION
+{
+VALUES ?property {
+Disease_Has_Finding:
+Disease_May_Have_Finding:
+}
+?disease ?property ?finding .
+?property rdfs:label ?propertyLabel .
+?disease rdfs:label ?diseaseLabel .
+?finding rdfs:subClassOf* PositiveLaboratoryTestResult: .
+?finding rdfs:label ?findingLabel .
+}
+UNION
+{ 
+VALUES ?property {
+Disease_Has_Finding:
+Disease_May_Have_Finding:
+}
+?disease ?property ?finding .
+?property rdfs:label ?propertyLabel .
+?disease rdfs:label ?diseaseLabel .
+?finding rdfs:subClassOf* SignalingPathwayStatus: .
+?finding rdfs:label ?findingLabel .
+}
+UNION
+{ 
+VALUES ?property {
+Disease_Has_Finding:
+Disease_May_Have_Finding:
+}
+?disease ?property ?finding .
+?property rdfs:label ?propertyLabel .
+?disease rdfs:label ?diseaseLabel .
+?finding rdfs:subClassOf* NegativeTestResult: .
+?finding rdfs:label ?findingLabel .
+} 
+}
+ORDERBY ?diseaseLabel
