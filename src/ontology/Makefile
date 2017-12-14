@@ -16,13 +16,12 @@ RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
 
 .PHONY: all
-all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl
-# ncit-oncotree.ttl ncit-oncotree.obo
+all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl ncit-oncotree.ttl ncit-oncotree.obo
 
 $(SRC):
 	curl -1 -L -O http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl
 
-$(NCIT): $(SRC) #oncotree.nt
+$(NCIT): $(SRC) oncotree.nt
 	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/remove-date.rq &&\
@@ -34,12 +33,11 @@ $(NCIT): $(SRC) #oncotree.nt
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-iri.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-ontology-version-iri.rq &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle additions.ttl &&\
+	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle oncotree.nt &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-iris-to-obo-style.rq &&\
 	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=turtle ncit-edit.ttl &&\
 	rm blazegraph.jnl &&\
 	robot reason -i ncit-edit.ttl -r elk -o $@
-	# Removed from the above list since OncoTree mappings are not available for now
-	#blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle oncotree.nt &&\
 
 ncit-property-graph.ttl: $(NCIT)
 	export JAVA_OPTS=-Xmx80G &&\
