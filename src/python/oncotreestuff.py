@@ -11,8 +11,8 @@ def oncotree(infile, outfile):
         ncidlist = [] #create a new empty list which we will put stuff in later
         next(myreader) #strips header row
         for row in myreader: #for each row in the oncotreedata list of lists
-            if row[7] != "": #ignore column 8 if it is blank
-                ncidlist.append(row[7]) #and put all other items in column 8 in this list
+            if row[9] != "": #ignore column 8 if it is blank
+                ncidlist.append(row[9]) #and put all other items in column 8 in this list
                 ncidlist2 = [] #make a new list
                 for item in ncidlist:
                     splitncid = item.split(',') #for each item in the first list (ncidlist), split it if it has a comma in it and store it in splitncid
