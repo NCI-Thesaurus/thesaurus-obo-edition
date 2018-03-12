@@ -113,7 +113,7 @@ oncotree.nt: tumor_types.txt
 	python3 ../python/oncotreestuff.py tumor_types.txt oncotree.nt
 
 oncotree_terms.txt: tumor_types.txt
-	set -e && cut -f 8 tumor_types.txt | tail -n +2 | sed 's~,~\'$$'\n~g' | sed '\~^\s*$$~d' | sed 's~^~http://purl.obolibrary.org/obo/NCIT_~' >$@
+	set -e && cut -f 10 tumor_types.txt | tail -n +2 | sed 's~,~\'$$'\n~g' | sed '\~^\s*$$~d' | sed 's~^~http://purl.obolibrary.org/obo/NCIT_~' >$@
 
 ncit-oncotree.ttl: $(NCIT) oncotree_terms.txt
 	robot extract --method MIREOT --input $(NCIT) --lower-terms oncotree_terms.txt --output ncit-oncotree.tmp.ttl &&\
