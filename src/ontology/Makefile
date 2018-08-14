@@ -107,7 +107,7 @@ ncit-plus-negations.owl: ncit-plus.owl
 	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ -o $@
 
 tumor_types.txt:
-	curl -L -O http://oncotree.mskcc.org/oncotree/api/tumor_types.txt
+	curl -L -O http://oncotree.mskcc.org/api/tumor_types.txt
 
 oncotree.nt: tumor_types.txt
 	python3 ../python/oncotreestuff.py tumor_types.txt oncotree.nt
