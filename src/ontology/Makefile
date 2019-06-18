@@ -19,7 +19,7 @@ RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl ncit-oncotree.ttl ncit-oncotree.obo
 
 $(SRC):
-	curl -1 -L -O http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl
+	curl -L -O https://evs.nci.nih.gov/ftp1/rdf/Thesaurus.owl
 
 $(NCIT): $(SRC) oncotree.nt
 	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G &&\
