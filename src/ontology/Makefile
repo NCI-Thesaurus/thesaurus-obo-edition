@@ -22,7 +22,7 @@ $(SRC):
 	curl -L -O https://evs.nci.nih.gov/ftp1/rdf/Thesaurus.owl
 
 $(NCIT): $(SRC) oncotree.nt
-	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G &&\
+	export JAVA_OPTS=-Xmx32G && export ROBOT_JAVA_ARGS=-Xmx32G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/remove-date.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/make_role_classes_obolete.rq &&\
@@ -85,9 +85,9 @@ ncit-bridge-to-uberon.owl:
 
 ncit-plus.owl: $(NCIT)
 	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G && export OWLTOOLS_MEMORY=16G &&\
-	ncit-utils replace-mapped-terms --mappings=../mappings/cl.tsv --ontology=ncit-edit.ttl --keep=2 --drop=0 --output=ncit-plus-tmp.owl &&\
-	ncit-utils replace-mapped-terms --mappings=../mappings/uberon.tsv --ontology=ncit-plus-tmp.owl --keep=2 --drop=0 --output=ncit-plus-tmp.owl &&\
-	ncit-utils replace-mapped-terms --mappings=../mappings/uberon-previous.tsv --ontology=ncit-plus-tmp.owl --keep=1 --drop=0 --output=ncit-plus-tmp.owl &&\
+	ncit-utils replace-mapped-terms --mappings=../mappings/cl.tsv --ontology=ncit-edit.ttl --keep=object_id --drop=subject_id --output=ncit-plus-tmp.owl &&\
+	ncit-utils replace-mapped-terms --mappings=../mappings/uberon.tsv --ontology=ncit-plus-tmp.owl --keep=object_id --drop=subject_id --output=ncit-plus-tmp.owl &&\
+	ncit-utils replace-mapped-terms --mappings=../mappings/uberon-previous.tsv --ontology=ncit-plus-tmp.owl --keep=object_id --drop=subject_id --output=ncit-plus-tmp.owl &&\
 	owltools ncit-plus-tmp.owl imports.ofn --add-imports-from-supports --extract-module -c -s 'http://github.com/NCI-Thesaurus/thesaurus-obo-edition/imports.owl' -o import_extract.owl &&\
 	robot merge --input ncit-plus-tmp.owl --input import_extract.owl --output ncit-plus-tmp.owl &&\
 	robot annotate --input ncit-plus-tmp.owl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ reason -r elk -o $@ && rm ncit-plus-tmp.owl
