@@ -1,12 +1,16 @@
 pattern_name: 'equivalence_mapping'
+pattern_iri: 'https://raw.githubusercontent.com/NCI-Thesaurus/thesaurus-obo-edition/master/src/mappings/equivalence_mapping.yaml'
 
 classes:
   Thing: 'owl:Thing'
   
 vars:
-  external: Thing
-  
-equivalentTo: 
-  text: "%s" 
-  vars:
-    - 'external'
+  subject_id: Thing
+  object_id: Thing
+
+logical_axioms:
+  - axiom_type: GCI
+    text: "%s EquivalentTo %s"
+    vars:
+      - "subject_id"
+      - "object_id"

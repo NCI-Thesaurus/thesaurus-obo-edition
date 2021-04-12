@@ -71,15 +71,18 @@ ncit.obo: $(NCIT)
 	export OWLTOOLS_MEMORY=16G &&\
 	owltools ncit.owl -o -f obo ncit.obo.tmp && grep -v ^owl-axioms ncit.obo.tmp >$@
 
-ncit-bridge-to-cl.owl:
+ncit-bridge-to-cl.owl: ../mappings/cl.tsv
+	grep -Ev '^#' $< >../mappings/cl-filtered.tsv &&\
 	export JAVA_OPTS=-Xmx16G &&\
-	dosdp-tools generate --infile=../mappings/cl.tsv --obo-prefixes=true --template=../mappings/equivalence_mapping.yaml --outfile=ncit-cl-bridge.ofn &&\
+	dosdp-tools generate --generate-defined-class true --infile=../mappings/cl-filtered.tsv --obo-prefixes=true --template=../mappings/equivalence_mapping.yaml --outfile=ncit-cl-bridge.ofn &&\
 	robot annotate --input ncit-cl-bridge.ofn --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --output $@ && rm ncit-cl-bridge.ofn
 	
-ncit-bridge-to-uberon.owl:
+ncit-bridge-to-uberon.owl: ../mappings/uberon.tsv ../mappings/uberon-previous.tsv
+	grep -Ev '^#' ../mappings/uberon-previous.tsv >../mappings/uberon-previous-filtered.tsv &&\
+	grep -Ev '^#' ../mappings/uberon.tsv >../mappings/uberon-filtered.tsv &&\
 	export JAVA_OPTS=-Xmx16G &&\
-	dosdp-tools generate --infile=../mappings/uberon-previous.tsv --obo-prefixes=true --template=../mappings/equivalence_mapping.yaml --outfile=ncit-uberon-previous-bridge.ofn &&\
-	dosdp-tools generate --infile=../mappings/uberon.tsv --obo-prefixes=true --template=../mappings/equivalence_mapping.yaml --outfile=ncit-uberon-bridge.ofn &&\
+	dosdp-tools generate --generate-defined-class true --infile=../mappings/uberon-previous-filtered.tsv --obo-prefixes=true --template=../mappings/equivalence_mapping.yaml --outfile=ncit-uberon-previous-bridge.ofn &&\
+	dosdp-tools generate --generate-defined-class true --infile=../mappings/uberon-filtered.tsv --obo-prefixes=true --template=../mappings/equivalence_mapping.yaml --outfile=ncit-uberon-bridge.ofn &&\
 	robot merge --input ncit-uberon-previous-bridge.ofn --input ncit-uberon-bridge.ofn --output ncit-uberon-bridge.ofn &&\
 	robot annotate --input ncit-uberon-bridge.ofn --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --output $@ && rm ncit-uberon-bridge.ofn
 
