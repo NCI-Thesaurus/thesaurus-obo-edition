@@ -1,0 +1,8 @@
+#curie_map:					
+"#  NCIT: ""http://purl.obolibrary.org/obo/NCIT_"""					
+"#  GO: ""http://purl.obolibrary.org/obo/GO_"""					
+"#  owl: ""http://www.w3.org/2002/07/owl#"""					
+subject_id	subject_label	predicate_id	predicate_label	object_id	object_label
+NCIT_C54714	'Acinar Cell Differentiation'	owl:equivalentClass	equivalent to	UBERON:0003684	abdominal cavity
+					
+					
