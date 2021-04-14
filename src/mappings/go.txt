@@ -3,6 +3,7 @@
 "#  GO: ""http://purl.obolibrary.org/obo/GO_"""					
 "#  owl: ""http://www.w3.org/2002/07/owl#"""					
 subject_id	subject_label	predicate_id	predicate_label	object_id	object_label
-NCIT_C54714	'Acinar Cell Differentiation'	owl:equivalentClass	equivalent to	UBERON:0003684	abdominal cavity
-					
-					
+NCIT:C54714	Acinar Cell Differentiation	owl:equivalentClass	equivalent to	GO:0090425	acinar cell differentiation
+NCIT:C36444	Clonal Immunoglobulin Heavy Chain Gene Rearrangement	owl:equivalentClass	equivalent to	GO:0071707	immunoglobulin heavy chain V-D-J recombination
+NCIT:C36452	Clonal Immunoglobulin Lambda Light Chain Gene Rearrangement	owl:equivalentClass	equivalent to	GO:0071708	immunoglobulin light chain V-J recombination
+NCIT:C35959	Mitotic Activity	owl:equivalentClass	equivalent to	GO:1903047	mitotic cell cycle process
