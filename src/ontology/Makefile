@@ -86,7 +86,7 @@ ncit-bridge-to-uberon.owl: ../mappings/uberon.tsv ../mappings/uberon-previous.ts
 	robot merge --input ncit-uberon-previous-bridge.ofn --input ncit-uberon-bridge.ofn --output ncit-uberon-bridge.ofn &&\
 	robot annotate --input ncit-uberon-bridge.ofn --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --output $@ && rm ncit-uberon-bridge.ofn
 
-ncit-plus.owl: $(NCIT) imports.ofn ../mappings/cl.tsv ../mappings/uberon.tsv ../mappings/uberon-previous.tsv ../mappings/go.tsv
+ncit-plus.owl: $(NCIT) imports.ofn ../mappings/cl.tsv ../mappings/uberon.tsv ../mappings/uberon-previous.tsv #../mappings/go.tsv
 	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G && export OWLTOOLS_MEMORY=16G &&\
 	ncit-utils replace-mapped-terms --mappings=../mappings/cl.tsv --ontology=ncit-edit.ttl --keep=object_id --drop=subject_id --output=ncit-plus-tmp.owl &&\
 	ncit-utils replace-mapped-terms --mappings=../mappings/uberon.tsv --ontology=ncit-plus-tmp.owl --keep=object_id --drop=subject_id --output=ncit-plus-tmp.owl &&\
