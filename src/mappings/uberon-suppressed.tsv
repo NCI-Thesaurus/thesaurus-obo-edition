@@ -1,0 +1,6 @@
+#curie_map:
+#  NCIT: "http://purl.obolibrary.org/obo/NCIT_"
+#  UBERON: "http://purl.obolibrary.org/obo/UBERON_"
+#  owl: "http://www.w3.org/2002/07/owl#"
+subject_id	predicate_id	predicate_label	object_id
+NCIT:C34022	owl:equivalentClass	equivalent to	UBERON:0006984
