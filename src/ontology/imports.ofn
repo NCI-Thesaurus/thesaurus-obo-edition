@@ -7,5 +7,8 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
 Ontology(<http://github.com/NCI-Thesaurus/thesaurus-obo-edition/imports.owl>
-Import(<http://purl.obolibrary.org/obo/uberon/ext.owl>)
+Import(<http://purl.obolibrary.org/obo/uberon/uberon-base.owl>)
+Import(<http://purl.obolibrary.org/obo/cl/cl-base.owl>)
+Import(<http://purl.obolibrary.org/obo/go/go-base.owl>)
+Import(<http://purl.obolibrary.org/obo/ro.owl>)
 )

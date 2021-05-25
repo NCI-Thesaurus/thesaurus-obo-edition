@@ -1,0 +1,16 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX oio: <http://www.geneontology.org/formats/oboInOwl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {  
+  ?ont dcterms:title ?title .
+  ?ont dcterms:description ?description .
+}
+WHERE { 
+  ?ont a owl:Ontology .
+  ?ont dcterms:title ?title .
+  ?ont dcterms:description ?description .
+}
