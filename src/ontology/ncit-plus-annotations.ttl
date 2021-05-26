@@ -1,0 +1,16 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+_:ont a owl:Ontology .
+
+dcterms:title a owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty .
+
+_:ont dcterms:title "NCIt Plus"^^xsd:string .
+
+_:ont dcterms:description "The NCIt Plus extends the NCIt OBO Edition by directly integrating OBO Library ontology concepts into NCIt axioms."^^xsd:string .
