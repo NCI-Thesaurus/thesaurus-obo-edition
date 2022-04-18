@@ -10,4 +10,4 @@ Additional downloads may be available in the [project wiki](https://github.com/N
 Please see the [project wiki](https://github.com/NCI-Thesaurus/thesaurus-obo-edition/wiki) for more information.
 
 ## Contact
-More information about this project can be provided by Melissa Haendel (haendel@ohsu.edu). For details on software implementing the OBO Edition, contact Jim Balhoff (balhoff@renci.org).
+More information about this project can be provided by Melissa Haendel (@mellybelly). For details on software implementing the OBO Edition, contact Jim Balhoff (balhoff@renci.org).
