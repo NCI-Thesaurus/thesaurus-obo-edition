@@ -9,4 +9,10 @@ RUN wget -nv https://github.com/balhoff/blazegraph-runner/releases/download/v$BL
 && tar -zxvf blazegraph-runner-$BLAZEGRAPH.tgz \
 && mv blazegraph-runner-$BLAZEGRAPH /tools/blazegraph
 
+# Install blazegraph
+ENV NCITUTILS=0.6
+ENV PATH "/tools/ncitutils/bin:$PATH"
+RUN wget -nv https://github.com/NCI-Thesaurus/ncit-utils/releases/download/v$NCITUTILS/ncit-utils-$NCITUTILS.tgz \
+&& tar -zxvf ncit-utils-$NCITUTILS.tgz \
+&& mv ncit-utils-$NCITUTILS /tools/ncitutils
 
