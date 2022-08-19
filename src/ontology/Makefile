@@ -177,16 +177,16 @@ ncbigene.ttl:
 
 monarch-data: coriell.ttl reactome.ttl bgee.ttl ncbigene.ttl
 
-ASSETS=ncit-bridge-to-cl.owl /
-ncit-bridge-to-uberon.owl /
-ncit-negations.owl /
-ncit-oncotree.obo /
-ncit-oncotree.ttl /
-ncit-plus-negations.owl /
-ncit-plus.owl /
-ncit.obo /
-ncit.owl /
-neoplasm-core.owl /
+ASSETS=ncit-bridge-to-cl.owl \
+ncit-bridge-to-uberon.owl \
+ncit-negations.owl \
+ncit-oncotree.obo \
+ncit-oncotree.ttl \
+ncit-plus-negations.owl \
+ncit-plus.owl \
+ncit.obo \
+ncit.owl \
+neoplasm-core.owl \
 neoplasm-hierarchy-report.txt
 
 deploy_release:
