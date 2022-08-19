@@ -26,7 +26,7 @@ docker-build:
 	&& docker tag $(IM):$(VERSION) $(IM):latest
 
 .PHONY: all
-all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl ncit-oncotree.ttl ncit-oncotree.obo
+all: $(NCIT) ncit.obo ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl neoplasm-hierarchy-report.txt neoplasm-core.owl ncit-oncotree.ttl ncit-oncotree.obo
 
 $(SRC):
 	curl -L -O https://evs.nci.nih.gov/ftp1/rdf/Thesaurus.owl
