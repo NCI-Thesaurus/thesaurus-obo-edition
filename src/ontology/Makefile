@@ -14,6 +14,16 @@ DATE=$(shell date +'%Y-%m-%d')
 PREFIX=http://purl.obolibrary.org/obo/ncit
 RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
+VERSION = "0.0.1"
+IM=monarchinitiative/ncit
+
+docker-build-no-cache:
+	@docker build --no-cache -t $(IM):$(VERSION) . \
+	&& docker tag $(IM):$(VERSION) $(IM):latest
+
+docker-build:
+	@docker build -t $(IM):$(VERSION) . \
+	&& docker tag $(IM):$(VERSION) $(IM):latest
 
 .PHONY: all
 all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl ncit-oncotree.ttl ncit-oncotree.obo
