@@ -176,3 +176,20 @@ ncbigene.ttl:
 	curl -L -O https://data.monarchinitiative.org/ttl/ncbigene.ttl
 
 monarch-data: coriell.ttl reactome.ttl bgee.ttl ncbigene.ttl
+
+ASSETS=ncit-bridge-to-cl.owl /
+ncit-bridge-to-uberon.owl /
+ncit-negations.owl /
+ncit-oncotree.obo /
+ncit-oncotree.ttl /
+ncit-plus-negations.owl /
+ncit-plus.owl /
+ncit.obo /
+ncit.owl /
+neoplasm-core.owl /
+neoplasm-hierarchy-report.txt
+
+deploy_release:
+	@test $(GHVERSION)
+	ls -alt $(ASSETS)
+	gh release create $(GHVERSION) --title "NCIT Release $(GHVERSION)" --draft $(ASSETS)
