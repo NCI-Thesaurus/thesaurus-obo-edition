@@ -14,9 +14,19 @@ DATE=$(shell date +'%Y-%m-%d')
 PREFIX=http://purl.obolibrary.org/obo/ncit
 RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
 
+VERSION = "0.0.1"
+IM=monarchinitiative/ncit
+
+docker-build-no-cache:
+	@docker build --no-cache -t $(IM):$(VERSION) . \
+	&& docker tag $(IM):$(VERSION) $(IM):latest
+
+docker-build:
+	@docker build -t $(IM):$(VERSION) . \
+	&& docker tag $(IM):$(VERSION) $(IM):latest
 
 .PHONY: all
-all: $(NCIT) ncit.obo ncit-graph.jnl ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl ncit-benign-malignant.ttl neoplasm-hierarchy-report.txt neoplasm-core.owl ncit-oncotree.ttl ncit-oncotree.obo
+all: $(NCIT) ncit.obo ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-plus.owl ncit-negations.owl ncit-plus-negations.owl neoplasm-hierarchy-report.txt neoplasm-core.owl ncit-oncotree.ttl ncit-oncotree.obo
 
 $(SRC):
 	curl -L -O https://evs.nci.nih.gov/ftp1/rdf/Thesaurus.owl
@@ -166,3 +176,20 @@ ncbigene.ttl:
 	curl -L -O https://data.monarchinitiative.org/ttl/ncbigene.ttl
 
 monarch-data: coriell.ttl reactome.ttl bgee.ttl ncbigene.ttl
+
+ASSETS=ncit-bridge-to-cl.owl \
+ncit-bridge-to-uberon.owl \
+ncit-negations.owl \
+ncit-oncotree.obo \
+ncit-oncotree.ttl \
+ncit-plus-negations.owl \
+ncit-plus.owl \
+ncit.obo \
+ncit.owl \
+neoplasm-core.owl \
+neoplasm-hierarchy-report.txt
+
+deploy_release:
+	@test $(GHVERSION)
+	ls -alt $(ASSETS)
+	gh release create $(GHVERSION) --title "NCIT Release $(GHVERSION)" --draft $(ASSETS)
