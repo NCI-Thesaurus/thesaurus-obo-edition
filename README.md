@@ -22,6 +22,16 @@ make docker-build
 sh odk.sh make all -B
 make deploy_release GHVERSION=v2022-08-19
 ```
+### NOTES on the above
+
+Last time I tried this I was working on a system where I could not easily install `gh`. This is a workaround:
+
+```
+./odk.sh bash # Go inside ODK
+gh auth login # Login with authentication token
+git config --global --add safe.directory /work #This may be necessary if you do not have the correct access rights
+make deploy_release GHVERSION=v2023-10-19 #(the usual)
+```
 
 ## Contact
 More information about this project can be provided by Melissa Haendel (@mellybelly). For details on software implementing the OBO Edition, contact Jim Balhoff (balhoff@renci.org).
