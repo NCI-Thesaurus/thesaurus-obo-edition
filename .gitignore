@@ -39,3 +39,6 @@ src/ontology/plus-neoplasm.ttl
 src/ontology/reactome.ttl
 src/ontology/standard-neoplasm.ttl
 src/ontology/tumor_types.txt
+.DS_Store
+src/ontology/tmp
+src/ontology/kgcl-diff.md

@@ -193,3 +193,21 @@ deploy_release:
 	@test $(GHVERSION)
 	ls -alt $(ASSETS)
 	gh release create $(GHVERSION) --title "NCIT Release $(GHVERSION)" --draft $(ASSETS)
+
+#################
+### KGCL Diff ###
+#################
+
+upgrade_oak:
+	pip install -U oaklib
+
+.PHONY: kgcl-diff
+kgcl-diff: kgcl-diff.md
+
+tmp/ncit-released.obo:
+	mkdir -p tmp
+	wget http://purl.obolibrary.org/obo/ncit.obo -O $@
+
+kgcl-diff.md: tmp/ncit-released.obo ncit.obo
+	runoak -i simpleobo:tmp/ncit-released.obo diff -X simpleobo:ncit.obo -o $@ --output-type md
+
