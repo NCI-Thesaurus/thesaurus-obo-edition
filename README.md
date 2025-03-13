@@ -34,4 +34,4 @@ make deploy_release GHVERSION=v2023-10-19 #(the usual)
 ```
 
 ## Contact
-More information about this project can be provided by Melissa Haendel (@mellybelly). For details on software implementing the OBO Edition, contact Jim Balhoff (balhoff@renci.org).
+More information about this project can be provided by Melissa Haendel (@mellybelly).
