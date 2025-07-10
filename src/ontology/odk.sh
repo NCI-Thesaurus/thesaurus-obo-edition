@@ -12,7 +12,7 @@
 
 ORG=${ORG:-monarchinitiative}
 IMAGE=${IMAGE:-ncit}
-ODK_JAVA_OPTS=-Xmx20G
+ODK_JAVA_OPTS=-Xmx48G
 ODK_DEBUG=${ODK_DEBUG:-no}
 
 TIMECMD=
