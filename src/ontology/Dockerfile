@@ -1,4 +1,4 @@
-FROM obolibrary/odkfull:v1.3.1
+FROM obolibrary/odkfull:v1.6
 
 LABEL maintainer="cjmungall@lbl.gov" 
 
