@@ -42,3 +42,4 @@ src/ontology/tumor_types.txt
 .DS_Store
 src/ontology/tmp
 src/ontology/kgcl-diff.md
+src/ontology/ncit-plus-tmp.owl
