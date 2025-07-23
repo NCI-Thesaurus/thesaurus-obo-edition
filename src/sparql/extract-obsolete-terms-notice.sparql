@@ -1,0 +1,12 @@
+PREFIX IAO: <http://purl.obolibrary.org/obo/IAO_>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX evs: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?subject
+WHERE {
+    ?subject IAO:0000115 ?definition .
+    ?subject owl:deprecated "true"^^xsd:boolean .
+    FILTER(CONTAINS(LCASE(STR(?definition)), "executive order"))
+}

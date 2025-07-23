@@ -1,0 +1,10 @@
+PREFIX IAO: <http://purl.obolibrary.org/obo/IAO_>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+    ?subject IAO:0000116 "This term has been modified from the source to comply with OBO guidelines, see https://github.com/NCI-Thesaurus/thesaurus-obo-edition?tab=readme-ov-file#obo-compliance for details."
+} WHERE {
+    ?subject IAO:0000115 ?value .
+    FILTER(CONTAINS(LCASE(STR(?value)), "important notice")|| CONTAINS(LCASE(STR(?value)), "executive order"))
+}

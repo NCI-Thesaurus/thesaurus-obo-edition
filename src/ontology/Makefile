@@ -30,9 +30,9 @@ docker-build:
 all: $(NCIT) ncit.obo ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-negations.owl ncit-oncotree.ttl ncit-oncotree.obo
 
 $(SRC):
-	curl -L -O https://evs.nci.nih.gov/ftp1/rdf/Thesaurus.owl
+# 	curl -L -O https://evs.nci.nih.gov/ftp1/rdf/Thesaurus.owl
 
-$(NCIT): $(SRC) oncotree.nt additions.ttl
+ncit-edit.owl: $(SRC) oncotree.nt additions.ttl
 	export JAVA_OPTS=-Xmx32G && export ROBOT_JAVA_ARGS=-Xmx32G &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/remove-date.rq &&\
@@ -46,9 +46,18 @@ $(NCIT): $(SRC) oncotree.nt additions.ttl
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle additions.ttl &&\
 	blazegraph-runner load   --journal=blazegraph.jnl --informat=turtle oncotree.nt &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/update-iris-to-obo-style.rq &&\
+	blazegraph-runner update --journal=blazegraph.jnl ../sparql/add-obo-compliance-notice.rq &&\
 	blazegraph-runner dump   --journal=blazegraph.jnl --outformat=turtle ncit-edit.ttl &&\
 	rm blazegraph.jnl &&\
 	robot reason -i ncit-edit.ttl -r elk -o $@
+
+$(NCIT): ncit-edit.owl tmp/ncit-released.obo
+	robot query --input $< --query ../sparql/extract-obsolete-terms-notice.sparql tmp/revert-obsolete.txt
+	robot filter -i tmp/ncit-released.obo --term-file tmp/revert-obsolete.txt --axioms all --select "self parents annotations properties" --signature true --trim true --output tmp/revert-obsolete.owl
+	sed -i  -e 's/ IMPORTANT NOTICE: The NCI Thesaurus contains biomedical terminologies that NCI does not own or control. This concept contains gender-related content that does not comply with Executive Order 14168.//g' \
+	 -e 's/IMPORTANT NOTICE: The NCI Thesaurus contains biomedical terminologies that NCI does not own or control. This concept contains gender-related content that does not comply with Executive Order 14168.//g' $<
+	robot remove -i $< --term-file tmp/revert-obsolete.txt --axioms all --select "self parents properties" --signature true --trim true \
+	 	  merge -i tmp/revert-obsolete.owl -i missing-classes.owl --output $@
 
 ncit-property-graph.ttl: $(NCIT)
 	export JAVA_OPTS=-Xmx80G &&\

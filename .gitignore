@@ -3,6 +3,7 @@ src/ontology/blazegraph-runner.log
 src/ontology/blazegraph.jnl
 src/ontology/ncit.owl.tmp
 src/ontology/ncit-edit.ttl
+src/ontology/ncit-edit.owl
 src/ontology/ncit.owl
 catalog-v001.xml
 
