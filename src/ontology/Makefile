@@ -8,8 +8,6 @@
 # - https://github.com/owlcollab/owltools/releases
 #########################################################################################################################
 
-SRC=Thesaurus.owl
-NCIT=ncit.owl
 DATE=$(shell date +'%Y-%m-%d')
 PREFIX=http://purl.obolibrary.org/obo/ncit
 RELEASEPREFIX=$(PREFIX)/releases/$(DATE)
@@ -27,14 +25,14 @@ docker-build:
 
 .PHONY: all
 # ncit-plus.owl ncit-plus-negations.owl were dropped from here, see comments below
-all: $(NCIT) ncit.obo ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-negations.owl ncit-oncotree.ttl ncit-oncotree.obo
+all: ncit.owl ncit.obo ncit-bridge-to-cl.owl ncit-bridge-to-uberon.owl ncit-negations.owl ncit-oncotree.ttl ncit-oncotree.obo
 
-$(SRC):
-# 	curl -L -O https://evs.nci.nih.gov/ftp1/rdf/Thesaurus.owl
+Thesaurus.owl:
+ 	curl -L -O https://evs.nci.nih.gov/ftp1/rdf/Thesaurus.owl
 
-ncit-edit.owl: $(SRC) oncotree.nt additions.ttl
+ncit-edit.owl: Thesaurus.owl oncotree.nt additions.ttl
 	export JAVA_OPTS=-Xmx32G && export ROBOT_JAVA_ARGS=-Xmx32G &&\
-	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml $(SRC) &&\
+	blazegraph-runner load   --journal=blazegraph.jnl --informat=rdfxml Thesaurus.owl &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/remove-date.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/make_role_classes_obolete.rq &&\
 	blazegraph-runner update --journal=blazegraph.jnl ../sparql/replace-properties-as-properties.rq &&\
@@ -51,20 +49,30 @@ ncit-edit.owl: $(SRC) oncotree.nt additions.ttl
 	rm blazegraph.jnl &&\
 	robot reason -i ncit-edit.ttl -r elk -o $@
 
-$(NCIT): ncit-edit.owl tmp/ncit-released.obo
+tmp/revert-obsolete.txt: ncit-edit.owl
 	robot query --input $< --query ../sparql/extract-obsolete-terms-notice.sparql tmp/revert-obsolete.txt
-	robot filter -i tmp/ncit-released.obo --term-file tmp/revert-obsolete.txt --axioms all --select "self parents annotations properties" --signature true --trim true --output tmp/revert-obsolete.owl
-	sed -i  -e 's/ IMPORTANT NOTICE: The NCI Thesaurus contains biomedical terminologies that NCI does not own or control. This concept contains gender-related content that does not comply with Executive Order 14168.//g' \
-	 -e 's/IMPORTANT NOTICE: The NCI Thesaurus contains biomedical terminologies that NCI does not own or control. This concept contains gender-related content that does not comply with Executive Order 14168.//g' $<
-	robot remove -i $< --term-file tmp/revert-obsolete.txt --axioms all --select "self parents properties" --signature true --trim true \
-	 	  merge -i tmp/revert-obsolete.owl -i missing-classes.owl --output $@
 
-ncit-property-graph.ttl: $(NCIT)
-	export JAVA_OPTS=-Xmx80G &&\
-	ncit-utils materialize-property-expressions ncit.owl $@.tmp ncit-property-graph-redundant.ttl.tmp &&\
-	mv $@.tmp $@ && mv ncit-property-graph-redundant.ttl.tmp ncit-property-graph-redundant.ttl &&\
-	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --output $@ &&\
-	robot annotate --input ncit-property-graph-redundant.ttl --ontology-iri $(PREFIX)/ncit-property-graph-redundant.ttl --output ncit-property-graph-redundant.ttl
+tmp/revert-obsolete.owl: tmp/ncit-released.obo tmp/revert-obsolete.txt
+	robot filter -i tmp/ncit-released.obo --term-file tmp/revert-obsolete.txt --axioms all --select "self parents annotations properties" --signature true --trim true --output tmp/revert-obsolete.owl
+
+ncit.owl: ncit-edit.owl tmp/ncit-released.obo tmp/revert-obsolete.txt tmp/revert-obsolete.owl
+	sed -i  -e 's/ IMPORTANT NOTICE: The NCI Thesaurus contains biomedical terminologies that NCI does not own or control. This concept contains gender-related content that does not comply with Executive Order 14168.//g' \
+	 	-e 's/IMPORTANT NOTICE: The NCI Thesaurus contains biomedical terminologies that NCI does not own or control. This concept contains gender-related content that does not comply with Executive Order 14168.//g' $<
+	robot \
+		remove -i ncit-edit.owl \
+			--term-file tmp/revert-obsolete.txt \
+			--axioms all \
+			--select "self parents properties" \
+			--signature true \
+			--trim true \
+	 	merge -i tmp/revert-obsolete.owl -i missing-classes.owl --output $@
+
+#ncit-property-graph.ttl: ncit.owl
+#	export JAVA_OPTS=-Xmx80G &&\
+#	ncit-utils materialize-property-expressions ncit.owl $@.tmp ncit-property-graph-redundant.ttl.tmp &&\
+#	mv $@.tmp $@ && mv ncit-property-graph-redundant.ttl.tmp ncit-property-graph-redundant.ttl &&\
+#	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --output $@ &&\
+#	robot annotate --input ncit-property-graph-redundant.ttl --ontology-iri $(PREFIX)/ncit-property-graph-redundant.ttl --output ncit-property-graph-redundant.ttl
 
 #ncit-plus-property-graph.ttl: ncit-plus.owl
 #	export JAVA_OPTS=-Xmx80G &&\
@@ -73,10 +81,10 @@ ncit-property-graph.ttl: $(NCIT)
 #	robot annotate --input $@ --ontology-iri $(PREFIX)/$@ --output $@ &&\
 #	robot annotate --input ncit-plus-property-graph-redundant.ttl --ontology-iri $(PREFIX)/ncit-plus-property-graph-redundant.ttl --output ncit-plus-property-graph-redundant.ttl
 #
-#ncit-graph.jnl: $(NCIT) ncit-property-graph.ttl ncit-plus.owl ncit-plus-property-graph.ttl monarch-data
+#ncit-graph.jnl: ncit.owl ncit-property-graph.ttl ncit-plus.owl ncit-plus-property-graph.ttl monarch-data
 #	export JAVA_OPTS=-Xmx16G &&\
 #	rm -f $@ &&\
-#	blazegraph-runner load --journal=$@ --informat=rdfxml --use-ontology-graph $(NCIT) &&\
+#	blazegraph-runner load --journal=$@ --informat=rdfxml --use-ontology-graph ncit.owl &&\
 #	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph.ttl &&\
 #	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncit-property-graph-redundant.ttl &&\
 #	blazegraph-runner load --journal=$@ --informat=rdfxml --use-ontology-graph ncit-plus.owl &&\
@@ -87,9 +95,9 @@ ncit-property-graph.ttl: $(NCIT)
 #	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph ncbigene.ttl &&\
 #	blazegraph-runner load --journal=$@ --informat=turtle --use-ontology-graph bgee.ttl
 
-ncit.obo: $(NCIT)
-	export OWLTOOLS_MEMORY=16G &&\
-	owltools ncit.owl -o -f obo ncit.obo.tmp && grep -v ^owl-axioms ncit.obo.tmp >$@
+ncit.obo: ncit.owl
+	robot convert --input $< --check false -f obo $(OBO_FORMAT_OPTIONS) -o tmp/$@
+	grep -v ^owl-axioms tmp/$@ >$@
 
 ncit-bridge-to-cl.owl: ../mappings/cl.tsv
 	grep -Ev '^#' $< >../mappings/cl-filtered.tsv &&\
@@ -106,7 +114,7 @@ ncit-bridge-to-uberon.owl: ../mappings/uberon.tsv ../mappings/uberon-previous.ts
 	robot merge --input ncit-uberon-previous-bridge.ofn --input ncit-uberon-bridge.ofn --output ncit-uberon-bridge.ofn &&\
 	robot annotate --input ncit-uberon-bridge.ofn --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --output $@ && rm ncit-uberon-bridge.ofn
 
-#ncit-plus.owl: $(NCIT) imports.ofn ../mappings/cl.tsv ../mappings/uberon.tsv ../mappings/uberon-previous.tsv #../mappings/go.tsv
+#ncit-plus.owl: ncit.owl imports.ofn ../mappings/cl.tsv ../mappings/uberon.tsv ../mappings/uberon-previous.tsv #../mappings/go.tsv
 #	export JAVA_OPTS=-Xmx16G && export ROBOT_JAVA_ARGS=-Xmx16G && export OWLTOOLS_MEMORY=16G &&\
 #	ncit-utils replace-mapped-terms --mappings=../mappings/cl.tsv --ontology=ncit-edit.ttl --keep=object_id --drop=subject_id --output=ncit-plus-tmp.owl &&\
 #	ncit-utils replace-mapped-terms --mappings=../mappings/uberon.tsv --ontology=ncit-plus-tmp.owl --keep=object_id --drop=subject_id --output=ncit-plus-tmp.owl &&\
@@ -121,8 +129,8 @@ ncit-bridge-to-uberon.owl: ../mappings/uberon.tsv ../mappings/uberon-previous.ts
 
 #	ncit-utils replace-mapped-terms --mappings=../mappings/go.tsv --ontology=ncit-plus-tmp.owl --keep=object_id --drop=subject_id --output=ncit-plus-tmp.owl &&\
 	
-ncit-negations.owl: $(NCIT)
-	blazegraph-runner load   --journal=ncit-negations.jnl --informat=rdfxml $(NCIT) &&\
+ncit-negations.owl: ncit.owl
+	blazegraph-runner load   --journal=ncit-negations.jnl --informat=rdfxml ncit.owl &&\
 	blazegraph-runner update --journal=ncit-negations.jnl ../sparql/convert_exclude_to_complement.rq &&\
 	blazegraph-runner dump   --journal=ncit-negations.jnl --outformat=rdfxml $@ &&\
 	rm ncit-negations.jnl &&\
@@ -144,8 +152,8 @@ oncotree.nt: tumor_types.txt
 oncotree_terms.txt: tumor_types.txt
 	set -e && cut -f 10 tumor_types.txt | tail -n +2 | sed 's~,~\'$$'\n~g' | sed '\~^\s*$$~d' | sed 's~^~http://purl.obolibrary.org/obo/NCIT_~' >$@
 
-ncit-oncotree.ttl: $(NCIT) oncotree_terms.txt
-	robot extract --method MIREOT --input $(NCIT) --lower-terms oncotree_terms.txt --output ncit-oncotree.tmp.ttl &&\
+ncit-oncotree.ttl: ncit.owl oncotree_terms.txt
+	robot extract --method MIREOT --input ncit.owl --lower-terms oncotree_terms.txt --output ncit-oncotree.tmp.ttl &&\
 	robot annotate --input ncit-oncotree.tmp.ttl --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --annotation dc:title "NCIt OncoTree slim" --annotation rdfs:comment "Simplified hierarchy for terms used within OncoTree" -o $@ && rm ncit-oncotree.tmp.ttl
 
 ncit-oncotree.obo: ncit-oncotree.ttl
@@ -157,9 +165,9 @@ ncit-benign-malignant.ttl: ncit-graph.jnl
 	blazegraph-runner construct --journal=ncit-graph.jnl --outformat=turtle ../sparql/convert-benign-malignant-to-axioms.rq ncit-benign-malignant.tmp.ttl &&\
 	robot merge --input benign-malignant-base.ttl --input ncit-benign-malignant.tmp.ttl annotate --ontology-iri $(PREFIX)/$@ --version-iri $(RELEASEPREFIX)/$@ --annotation rdfs:comment "Conversion of benign and malignant annotations to logical axioms, for consistency testing." -o $@ && rm ncit-benign-malignant.tmp.ttl
 
-#neoplasm-hierarchy-report.txt: $(NCIT) ncit-plus.owl
+#neoplasm-hierarchy-report.txt: ncit.owl ncit-plus.owl
 #	export ROBOT_JAVA_ARGS=-Xmx16G &&\
-#	robot query --format ttl --input $(NCIT) --construct ../sparql/extract-neoplasm-hierarchy.rq standard-neoplasm.ttl &&\
+#	robot query --format ttl --input ncit.owl --construct ../sparql/extract-neoplasm-hierarchy.rq standard-neoplasm.ttl &&\
 #	robot query --format ttl --input ncit-plus.owl --construct ../sparql/extract-neoplasm-hierarchy.rq plus-neoplasm.ttl &&\
 #	robot diff --left standard-neoplasm.ttl --right plus-neoplasm.ttl --output neoplasm-hierarchy-report.txt
 
