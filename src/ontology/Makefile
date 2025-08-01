@@ -55,7 +55,7 @@ tmp/revert-obsolete.txt: ncit-edit.owl
 tmp/revert-obsolete.owl: tmp/ncit-released.obo tmp/revert-obsolete.txt
 	robot filter -i tmp/ncit-released.obo --term-file tmp/revert-obsolete.txt --axioms all --select "self parents annotations properties" --signature true --trim true --output tmp/revert-obsolete.owl
 
-ncit.owl: ncit-edit.owl tmp/ncit-released.obo tmp/revert-obsolete.txt tmp/revert-obsolete.owl
+ncit.owl: ncit-edit.owl tmp/revert-obsolete.txt tmp/revert-obsolete.owl
 	sed -i  -e 's/ IMPORTANT NOTICE: The NCI Thesaurus contains biomedical terminologies that NCI does not own or control. This concept contains gender-related content that does not comply with Executive Order 14168.//g' \
 	 	-e 's/IMPORTANT NOTICE: The NCI Thesaurus contains biomedical terminologies that NCI does not own or control. This concept contains gender-related content that does not comply with Executive Order 14168.//g' $<
 	robot \
